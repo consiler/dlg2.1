@@ -1,0 +1,76 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: zamablogfacebook\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-09 17:04-0000\n"
+"PO-Revision-Date: 2012-08-09 17:04-0000\n"
+"Last-Translator: Edmond TINEDREBEOGO <edmond@tiendrebeogo.com>\n"
+"Language-Team: Dezmonde Agence Web <translate@dezmonde.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Country: BURKINA FASO\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: facebook-likebox-widget.php:64
+msgid "en_US"
+msgstr "de_DE"
+
+#: facebook-likebox-widget.php:65
+msgid "Donation for Facebook Likebox Widget"
+msgstr "Donatie voor Facebook Likebox Widget"
+
+#: facebook-likebox-widget.php:66
+msgid "1"
+msgstr "1"
+
+#: facebook-likebox-widget.php:166
+msgid "Facebook Like Box Widget"
+msgstr "Facebook Like Box Widget"
+
+#: facebook-likebox-widget.php:172
+msgid "Add a Facebook Like Box to your site."
+msgstr "Voeg een Facebook Like Box naar uw site."
+
+#: facebook-likebox-widget.php:210
+msgid "Title"
+msgstr "Titel"
+
+#: facebook-likebox-widget.php:211
+msgid "Facebook Page URL"
+msgstr "Facebook Pagina URL"
+
+#: facebook-likebox-widget.php:212
+msgid "Width (in pixels)"
+msgstr "Breedte (in pixels)"
+
+#: facebook-likebox-widget.php:213
+msgid "Height (in pixels)"
+msgstr "Hoogte (in pixels)"
+
+#: facebook-likebox-widget.php:214
+msgid "Color scheme"
+msgstr "Kleurenschema"
+
+#: facebook-likebox-widget.php:215
+msgid "Show Faces"
+msgstr "Toon faces"
+
+#: facebook-likebox-widget.php:216
+msgid "Show stream"
+msgstr "Toon stroom"
+
+#: facebook-likebox-widget.php:217
+msgid "Show header"
+msgstr "Zeige header"
+
+#: facebook-likebox-widget.php:218
+msgid "Lite"
+msgstr "Lite"
+
+#: facebook-likebox-widget.php:219
+msgid "Dark"
+msgstr "Donker"
+

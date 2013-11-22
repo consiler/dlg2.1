@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+/** 
+ * Default CSS Drop-Down Menu Theme
+ *
+ * @file		default.css
+ * @name		Default
+ * @version		0.1.1
+ * @type		transitional
+ * @browsers	Windows: IE5+, Opera7+, Firefox1+
+ *				Mac OS: Safari2+, Firefox2+
+ *
+ * @link		http://www.lwis.net/
+ * @copyright	2008 Live Web Institute. All Rights Reserved.
+ *
+ * Module Classes: *.dir {} *.on {} *.open {} li.hover {} li.first {} li.last {}
+ * Expected directory tag - li
+ *
+ */
+
+
+/*-------------------------------------------------/
+ * @section		Base Drop-Down Styling
+ * @structure	ul (unordered list)
+ *				ul li (list item)
+ *				ul li a (links)
+ *				/*\.class|(li|a):hover/
+ * @level sep	ul
+ */
+
+
+ul.dropdown {
+ font-weight: bold;
+ font: 0.9em Arial, Verdana, sans-serif;
+}
+
+	ul.dropdown li {
+	 padding: 10px 10px;
+	 color: #ccc;
+	 text-transform:uppercase;
+	}
+
+	ul.dropdown li.hover,
+	ul.dropdown li:hover {
+	 color: #fff;
+	}
+	
+	ul.dropdown li li.hover,
+	ul.dropdown li li:hover {
+	 color: #fff;
+	 background: #3b3b3b;
+	}
+
+	ul.dropdown a:link,
+	ul.dropdown a:visited	{ color: #ccc; text-decoration: none; }
+	ul.dropdown a:hover		{ color: #aaa; }
+	ul.dropdown a:active	{  }
+
+
+	/* -- level mark -- */
+
+	ul.dropdown ul {
+	 width: 200px;
+	 margin-top: 0px;
+	 padding-top: 11px;
+	 background:transparent url(../images/menu-bg.png) top left no-repeat;
+	 margin-left: 2px;
+	}
+
+		ul.dropdown ul li {
+		 font-weight: normal;
+		  border-style: solid;
+	 border-width: 0px 0px 0px 0;
+	 border-color: #1a1a1a #292929 #292929;
+		}
+		
+		ul.dropdown ul ul {
+		 background-image:none;
+		 padding-top: 3px;
+		  margin-left: 0px;
+		}
+
+ul.dropdown ul li {
+
+	 background-color: #000;
+		}
+
+ul.dropdown ul li.hover,
+	ul.dropdown ul li:hover  {
+	 
+	}

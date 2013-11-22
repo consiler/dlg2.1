@@ -1,4 +1,4 @@
-dlg2.1
-======
+dlg
+===
 
-Missile guidance system written in HTML
+Version 2

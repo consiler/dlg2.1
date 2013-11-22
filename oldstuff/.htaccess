@@ -1,0 +1,2 @@
+AddHandler phpini-cgi .php
+Action phpini-cgi /cgi-bin/php5-custom-ini.cgi
