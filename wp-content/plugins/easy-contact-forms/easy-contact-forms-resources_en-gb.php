@@ -182,7 +182,7 @@ class EasyContactFormsT extends EasyContactFormsStrings {
  var $CF_UploadingText = 'Uploading ...';
  var $CF_UseLink = 'Use a direct link';
  var $CF_UseProfileData = 'click here';
- var $CF_UserProfileRouterIntro = 'This field will link the form to a user profile via the userid form parameter, for example [champion_forms fid=2 userid=15]. <br/><br/>When the userid is set, the notification messages will be sent to the email address found in the user’s profile Email field. <br/></br>';
+ var $CF_UserProfileRouterIntro = 'This field will link the form to a user profile via the userid form parameter, for example [champion_forms fid=2 userid=15]. <br/><br/>When the userid is set, the notification messages will be sent to the email address found in the user\'s profile Email field. <br/></br>';
  var $CF_Validate = 'Validate';
  var $CF_ValidCSSClass = 'Valid value CSS class';
  var $CF_ValidCSSStyle = 'Valid value CSS style';
@@ -231,6 +231,7 @@ class EasyContactFormsT extends EasyContactFormsStrings {
  var $Conversion2 = 'Conversion 2';
  var $Copy = 'Copy';
  var $Country = 'Country';
+ var $CreateFromTemplate = 'Create from template';
  var $CurrencySymbol = '$';
  var $CustomFieldTemplates = 'Custom field templates';
  var $CustomForm = 'Form';
@@ -268,6 +269,7 @@ class EasyContactFormsT extends EasyContactFormsStrings {
  var $EmailSettings = 'Email settings';
  var $EmailTemplateInfo = 'Email template info';
  var $Empty = '';
+ var $EntriesPerDayLast30Days = 'Entries per day. Last 30 days';
  var $EntryCount = 'Entry count';
  var $EntryId = 'Entry id';
  var $EntryStatistics = 'Current form entries';
@@ -287,6 +289,7 @@ class EasyContactFormsT extends EasyContactFormsStrings {
  var $FirstName = 'First name';
  var $FixJSLoading = 'Fix Submit button (see the FAQ Section)';
  var $FixJSLoading2 = 'Fix Submit button 2 (additionally)';
+ var $FixOrder = 'Fix order';
  var $FixStatus0 = 'Fix Status = 0';
  var $FixStatus02 = 'Fix Status = 0, Alternative way';
  var $FormClass = 'Form class';
@@ -296,6 +299,7 @@ class EasyContactFormsT extends EasyContactFormsStrings {
  var $FormHolder = 'Form holder';
  var $FormStatistics = 'Form conversion';
  var $FormStyle = 'Form style';
+ var $FormTemplates = 'Form templates';
  var $FormTitle = 'Form name';
  var $FormWidth = 'Form width';
  var $FrontEnd = 'Front end';
@@ -369,6 +373,7 @@ class EasyContactFormsT extends EasyContactFormsStrings {
  var $ItwillDeleteRecordsAndFilesAreYouSure = 'Selected items and linked files will be deleted. Do you wish to continue?';
  var $ItwillDeleteRecordsAreYouSure = 'Selected items will be deleted. Do you wish to continue?';
  var $ItwillDeleteYourCurrentData = 'It will delete your current data and replace it with Easy Contact Forms data. Do you wish to continue?';
+ var $ItWillReorderFieldsets = 'It will fix field order errors and may re-order the form fields. Do you wish to continue?';
  var $Label = 'Label';
  var $LastName = 'Last name';
  var $LineHeightUnit = 'Line height unit';
@@ -415,6 +420,7 @@ class EasyContactFormsT extends EasyContactFormsStrings {
  var $OrderStatuses = 'Order statuses';
  var $PageName = 'Page name';
  var $PageStatistics = 'Page conversion';
+ var $Performance = 'Performance';
  var $Phone1 = 'Phone 1';
  var $Phone2 = 'Phone 2';
  var $Phone3 = 'Phone 3';
@@ -475,6 +481,7 @@ class EasyContactFormsT extends EasyContactFormsStrings {
  var $SiteUserCount = 'Site users';
  var $SiteUserCountInEasyContactCount = 'Site users having profiles in Easy Contact';
  var $Size = 'Size';
+ var $SkipWeeklyReport = 'Skip weekly report';
  var $SkypeId = 'Skype id';
  var $State = 'State';
  var $Storagename = 'Real Name';

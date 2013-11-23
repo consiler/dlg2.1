@@ -47,11 +47,6 @@ EasyContactFormsLayout::getFormHeader2Body();
         );?>
       </div>
       <div class='ufo-float-left'>
-        <a href='http://championforms.com/champion-forms/easy' style='margin-top:4px;display:block;padding-left:4px'>
-          Data Export
-        </a>
-      </div>
-      <div class='ufo-float-left'>
         <?php 
           $query = "SELECT Options.Value FROM #wp__easycontactforms_options AS Options WHERE Options.Description = 'customformsentries_main_view_buttons'";
           $plugs = EasyContactFormsDB::getObjects($query);

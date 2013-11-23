@@ -42,7 +42,7 @@
         );?>
       </div>
       <div class='ufo-float-left'>
-        <a href='http://championforms.com/champion-forms/view' style='margin-top:4px;display:block;padding-left:4px'>
+        <a href='http://championforms.com/upgrade/view' style='margin-top:4px;display:block;padding-left:4px'>
           Data Export
         </a>
       </div>

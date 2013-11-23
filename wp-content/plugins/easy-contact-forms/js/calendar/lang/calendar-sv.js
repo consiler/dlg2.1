@@ -91,3 +91,5 @@ Calendar._TT["DEF_DATE_FORMAT"] = "%Y-%m-%d";
 Calendar._TT["TT_DATE_FORMAT"] = "%A %d %b %Y";
 
 Calendar._TT["WK"] = "vecka";
+Calendar._TT["WEEKEND"] = "0,6";
+Calendar._TT["DAY_FIRST"] = "%s";

@@ -366,10 +366,10 @@ EasyContactFormsLayout::getFormHeader2Body();
                    <?php echo $obj->getAvaliableStyles();?>
                  </select>
                  <a href='http://championforms.com/form-templates/view' style='margin:10px 0 20px'>
-                   More Styles
+                   Form Templates & Styles
                  </a>
                  <a href='http://championforms.com/graphic-design/view' style='margin:10px 0 20px 10px'>
-                   Form Designer
+                   Style customization
                  </a>
                  <label for='FormClass'>
                    <?php echo EasyContactFormsT::get('FormClass');?>

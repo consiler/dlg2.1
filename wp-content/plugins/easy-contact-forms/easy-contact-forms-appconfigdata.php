@@ -13,7 +13,7 @@
 
 
 	DEFINE('EASYCONTACTFORMS__helpRoot',	'http://easy-contact-forms.com');
-	DEFINE('EASYCONTACTFORMS__prodVersion', '1.4.7');
+	DEFINE('EASYCONTACTFORMS__prodVersion', '1.4.9');
 	$ds = DIRECTORY_SEPARATOR;
 	/**
 	 * A file system application root

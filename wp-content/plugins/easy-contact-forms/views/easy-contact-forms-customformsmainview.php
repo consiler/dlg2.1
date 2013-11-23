@@ -56,6 +56,16 @@ EasyContactFormsLayout::getFormHeader2Body();
           )
         );?>
       </div>
+      <div class='ufo-float-left'>
+        <?php echo EasyContactFormsIHTML::getButton(
+          array(
+            'label' => EasyContactFormsT::get('CreateFromTemplate'),
+            'events' => " onclick='ufo.getAvailableTemplates()'",
+            'iclass' => " class='icon_button_add' ",
+            'bclass' => "ufo-imagebutton new-from-tpl-button",
+          )
+        );?>
+      </div>
       <div style='clear:left'></div>
     </div>
   </div>

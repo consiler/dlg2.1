@@ -62,6 +62,7 @@ class EasyContactFormsApplicationSettings extends EasyContactFormsBase {
 				'w3cStyle' => '',
 				'FixJSLoading2' => 0,
 				'AllowMarkupInEntries' => 0,
+				'SkipWeeklyReport' => 0,
 			);
 
 		if ($objdata) {
@@ -95,6 +96,7 @@ class EasyContactFormsApplicationSettings extends EasyContactFormsBase {
 		$request = EasyContactFormsUtils::parseRequest($request, 'w3cCompliant', 'boolean');
 		$request = EasyContactFormsUtils::parseRequest($request, 'FixJSLoading2', 'boolean');
 		$request = EasyContactFormsUtils::parseRequest($request, 'AllowMarkupInEntries', 'boolean');
+		$request = EasyContactFormsUtils::parseRequest($request, 'SkipWeeklyReport', 'boolean');
 
 		parent::update($request, $id);
 
@@ -264,7 +266,7 @@ class EasyContactFormsApplicationSettings extends EasyContactFormsBase {
 		if (!isset($obj)) {
 			$obj = new EasyContactFormsApplicationSettings();
 
-			$obj->selectstmt = "SELECT id, UseTinyMCE, ApplicationWidth, ApplicationWidth2, FixJSLoading, FormCompletionMinTime, FormCompletionMaxTime, FixStatus0, InitTime, ShowPoweredBy, FixStatus02, w3cCompliant, FixJSLoading2, AllowMarkupInEntries, FileFolder, PhoneRegEx FROM " . $obj->getTableName() . " WHERE id = :id";
+			$obj->selectstmt = "SELECT id, UseTinyMCE, ApplicationWidth, ApplicationWidth2, FixJSLoading, FormCompletionMinTime, FormCompletionMaxTime, FixStatus0, InitTime, ShowPoweredBy, FixStatus02, w3cCompliant, FixJSLoading2, AllowMarkupInEntries, SkipWeeklyReport, FileFolder, ProductVersion, PhoneRegEx FROM " . $obj->getTableName() . " WHERE id = :id";
 
 			$obj->fields = $obj->getObjectData(1);
 			$needssave = FALSE;
@@ -372,7 +374,7 @@ class EasyContactFormsApplicationSettings extends EasyContactFormsBase {
 		$link = $this->get('ShowPoweredBy');
 		if ($link) {
 
-			return "<div class='ufo-pb-link'>Powered by <a target=_blank href='http://championforms.com'>Champion Forms</a></div>";
+			return "<div class='ufo-pb-link'>Powered by <a target=_blank href='http://championforms.com'>http://championforms.com</a></div>";
 
 		}
 		return '';
@@ -576,6 +578,10 @@ class EasyContactFormsApplicationSettings extends EasyContactFormsBase {
 		$obj->AllowMarkupInEntriesChecked
 			= $obj->get('AllowMarkupInEntries') ? 'checked' : '';
 		$obj->AllowMarkupInEntries = $obj->get('AllowMarkupInEntries') ? 'on' : 'off';
+
+		$obj->SkipWeeklyReportChecked
+			= $obj->get('SkipWeeklyReport') ? 'checked' : '';
+		$obj->SkipWeeklyReport = $obj->get('SkipWeeklyReport') ? 'on' : 'off';
 
 		$obj->set('SendFrom', htmlspecialchars($obj->get('SendFrom'), ENT_QUOTES));
 		$obj->set('NotLoggenInText', htmlspecialchars($obj->get('NotLoggenInText')));

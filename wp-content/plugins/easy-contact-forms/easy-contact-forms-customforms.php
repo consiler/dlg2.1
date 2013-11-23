@@ -259,7 +259,7 @@ class EasyContactFormsCustomForms extends EasyContactFormsBase {
 			}
 			$fldid = intval(EasyContactFormsUtils::cutPrefix($key, 'id-'));
 			$value = stripslashes($value);
-			$fldvalues[$fldid] = htmlspecialchars($value, ENT_QUOTES);
+			$fldvalues[$fldid] = htmlspecialchars($value);
 		}
 		if ($this->processSpam(count($fldvalues) == 0, $map)) {
 			return;
@@ -558,6 +558,54 @@ class EasyContactFormsCustomForms extends EasyContactFormsBase {
 	}
 
 	/**
+	 * 	getAvailableTemplates
+	 *
+	 * @param  $map
+	 * 
+	 *
+	 * @return
+	 * 
+	 */
+	function getAvailableTemplates($map) {
+
+		$ds = DIRECTORY_SEPARATOR;
+		$html = EasyContactFormsRoot::api('form-template-showcase', (object)array(), FALSE);
+		if (is_wp_error($html)) {
+
+			echo '<div style="background-color:#f33;width:350px;margin:50px auto;text-align:center;color:#fff;padding:40px;">Somethig is wrong. Please try again later</div>';
+
+			return;
+		}
+		$index = '';
+		$js = "config = {};";
+		$js .= "config.url='" . admin_url( 'admin-ajax.php' ) . "';";
+		$js .= "config.initial = {t:'CustomForms', m:'getAvailableTemplates'};";
+		$js .= "config.bodyid = 'tpl-main-wrapper-body';";
+		$js .= "config.resources = {};";
+		$js .= "var appManConfig = config;";
+		$js .= "var ajaxurl = config.url;";
+
+		$index .= "<html>";
+		$index .= "<head>";
+		$index .= "<title>Templates. Easy Contact Forms</title>";
+		$index .= "<script type='text/javascript'>$js</script>";
+
+		$index .= "<script type='text/javascript' src='" . EASYCONTACTFORMS__engineWebAppDirectory . "/js/jquery.js'></script>";
+
+		$index .= "<script type='text/javascript' src='" . EASYCONTACTFORMS__engineWebAppDirectory . "/js/json.js'></script>";
+
+		$index .= "<script type='text/javascript' src='" . EASYCONTACTFORMS__engineWebAppDirectory . "/js/as.js'></script>";
+
+		$index .= "<script type='text/javascript' src='" . EASYCONTACTFORMS__engineWebAppDirectory . "/easy-contact-formshtml.1.4.9.js'></script>";
+
+		$index .= $html;
+		$index .= "</html>";
+
+		echo $index;
+
+	}
+
+	/**
 	 * 	Lists installed client side form styles
 	 *
 	 *
@@ -807,6 +855,132 @@ class EasyContactFormsCustomForms extends EasyContactFormsBase {
 		}
 		$stylespec->multi = true;
 		return $stylespec;
+
+	}
+
+	/**
+	 * 	installTemplate
+	 *
+	 * @param  $map
+	 * 
+	 *
+	 * @return
+	 * 
+	 */
+	function installTemplate($map) {
+
+		$args = $map['a'];
+		if (function_exists('gzinflate')) {
+			$args['inflate'] = true;
+		}
+		$apiresponse = EasyContactFormsRoot::api('form-template-install', $args);
+
+		if (is_wp_error($apiresponse)) {
+			$this->processAPIError($apiresponse->get_error_message());
+		}
+		else if ($apiresponse->error == 1) {
+			$this->processAPIError($apiresponse->text);
+		}
+
+		$tpl = $apiresponse->text;
+		$tpl = base64_decode($tpl);
+		if (function_exists('gzinflate')) {
+			$tpl = gzinflate($tpl);
+		}
+		$tpl = unserialize($tpl);
+
+		if (!$tpl) {
+			$this->processAPIError('Wrong response from the API');
+		}
+
+		$tplfields = array();
+		$tplfields[] = 'NotificationText';
+		$tplfields[] = 'NotificationSubject';
+		$tplfields[] = 'ConfirmationText';
+		$tplfields[] = 'ConfirmationSubject';
+		$tplfields[] = 'ReplyToNameTemplate';
+
+		$form = EasyContactFormsClassLoader::getObject('CustomForms', true);
+		$formid = $form->get('id');
+		$form->setData($tpl->form);
+		$form->set('id', $formid);
+		$form->save();
+
+		$tplfieldvalues = array();
+
+		foreach($tplfields as $fld) {
+			$tplfieldvalues[$fld] = $form->get($fld);
+		}
+
+		$mapping = array();
+
+		foreach($tpl->c as $fld) {
+			$oldfldid = $fld->id;
+			$field = EasyContactFormsClassLoader::getObject('CustomFormFields', true);
+			$fieldid = $field->get('id');
+			$mapping[$oldfldid] = $fieldid;
+			$field->setData($fld);
+			$field->set('id', $fieldid);
+			$field->set('CustomForms', $formid);
+			$field->set('FieldSet', $fieldid);
+			$field->save();
+			$field->updateTemplate();
+		}
+
+		foreach($tpl->f as $fld) {
+			$oldfldid = $fld->id;
+			$field = EasyContactFormsClassLoader::getObject('CustomFormFields', true);
+			$fieldid = $field->get('id');
+			$field->setData($fld);
+			$field->set('id', $fieldid);
+			$field->set('CustomForms', $formid);
+			$field->set('FieldSet', $mapping[$fld->FieldSet]);
+			$field->save();
+			$field->updateTemplate();
+
+			foreach($tplfieldvalues as $name => $value) {
+				$tplfieldvalues[$name] = $this->getTemplateTag($field->get('Description'), $fieldid, $value, $oldfldid);
+			}
+		}
+
+		foreach($tplfieldvalues as $name => $value) {
+			$form->set($name, $value);
+		}
+
+		$currentuser = get_current_user_id();
+		$query = "SELECT Users.id FROM #wp__easycontactforms_users AS Users WHERE Users.CMSId = '$currentuser'";
+		$userid = EasyContactFormsDB::getValue($query);
+		if (!is_null($userid)) {
+			$form->set('ObjectOwner', $userid);
+		}
+
+		$form->save();
+
+		$response = (object) array();
+		$response->error = 0;
+		$response->message = 'The template is installed';
+		$response = json_encode($response);
+		echo $response;
+
+	}
+
+	/**
+	 * 	processAPIError
+	 *
+	 * @param  $message
+	 * 
+	 *
+	 * @return
+	 * 
+	 */
+	function processAPIError($message) {
+
+		$response = (object) array();
+		$response->error = 1;
+		$response->message = $message;
+		$response = json_encode($response);
+		echo $response;
+		exit();
 
 	}
 
@@ -1385,6 +1559,7 @@ class EasyContactFormsCustomForms extends EasyContactFormsBase {
 		$js .= "config.bodyid = 'ufo-formpreview-wrapper';";
 		$js .= "config.resources = {};";
 		$js .= "var appManConfig = config;";
+		$js .= "var ajaxurl = config.url;";
 
 		$index .= "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>";
 
@@ -1398,7 +1573,7 @@ class EasyContactFormsCustomForms extends EasyContactFormsBase {
 
 		$index .= "<script type='text/javascript' src='" . EASYCONTACTFORMS__engineWebAppDirectory . "/js/as.js'></script>";
 
-		$index .= "<script type='text/javascript' src='" . EASYCONTACTFORMS__engineWebAppDirectory . "/easy-contact-formshtml.1.4.7.js'></script>";
+		$index .= "<script type='text/javascript' src='" . EASYCONTACTFORMS__engineWebAppDirectory . "/easy-contact-formshtml.1.4.9.js'></script>";
 
 		$index .= "<script>$(document).ready(function(){ufoCf.refreshForm(this, {$fid});});</script>";
 		$index .= "<style type='text/css'>";
@@ -1427,7 +1602,7 @@ class EasyContactFormsCustomForms extends EasyContactFormsBase {
 		$index .= "<iframe frameborder=0 class='ufo-form-preview ufo-id-link' style='overflow:auto' name='ufo-form-preview' id='ufo-form-preview'></iframe>";
 
 		$index .= "</td>";
-		$index .= "<tr></table></html>";
+		$index .= "</tr></table></body></html>";
 
 		echo $index;
 
@@ -1484,7 +1659,7 @@ class EasyContactFormsCustomForms extends EasyContactFormsBase {
 			$text[] = $form->basicLoadStyle($as->get('w3cStyle'));
 		}
 
-		$text[] = "<script type='text/javascript' src='" . EASYCONTACTFORMS__engineWebAppDirectory . "/easy-contact-forms-forms.1.4.7.js'></script>";
+		$text[] = "<script type='text/javascript' src='" . EASYCONTACTFORMS__engineWebAppDirectory . "/easy-contact-forms-forms.1.4.9.js'></script>";
 
 		$text[] = "<table align=center style='height:100%'><tr>";
 		$text[] = "<td style='padding-top:50px;vertical-align:top'>";
@@ -1996,6 +2171,14 @@ class EasyContactFormsCustomForms extends EasyContactFormsBase {
 
 			case 'copy':
 				$this->copy($dispmap);
+				return NULL;
+
+			case 'getAvailableTemplates':
+				$this->getAvailableTemplates($dispmap);
+				return NULL;
+
+			case 'installTemplate':
+				$this->installTemplate($dispmap);
 				return NULL;
 
 			case 'preview':

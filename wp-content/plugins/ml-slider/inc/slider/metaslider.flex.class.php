@@ -14,12 +14,13 @@ class MetaFlexSlider extends MetaSlider {
      * 
      * @param integer $id slideshow ID
      */
-    public function __construct($id) {
-        parent::__construct($id);
+    public function __construct($id, $shortcode_settings) {
+        parent::__construct($id, $shortcode_settings);
 
         add_filter('metaslider_flex_slider_parameters', array($this, 'enable_carousel_mode'), 10, 2);
         add_filter('metaslider_flex_slider_parameters', array($this, 'enable_easing'), 10, 2);
         add_filter('metaslider_css', array($this, 'get_carousel_css'), 11, 3);
+        add_filter('metaslider_css_classes', array($this, 'remove_bottom_margin'), 11, 3);
         
         $this->carousel_item_margin = apply_filters('metaslider_carousel_margin', $this->carousel_item_margin, $id);
     }
@@ -50,8 +51,10 @@ class MetaFlexSlider extends MetaSlider {
         return $options;
     }
 
+
+
     /**
-     * Adjust the slider parameters so they're comparible with the carousel mode
+     * Ensure CSS transitions are disabled when easing is enabled.
      * 
      * @param array $options
      * @param integer $slider_id
@@ -63,9 +66,28 @@ class MetaFlexSlider extends MetaSlider {
         }
         
         // we don't want this filter hanging around if there's more than one slideshow on the page
-        remove_filter('metaslider_flex_slider_parameters', 'enable_easing');
+        remove_filter('metaslider_flex_slider_parameters', array($this, 'enable_easing'), 10, 2);
 
         return $options;
+    }
+
+    /**
+     * Add a 'nav-hidden' class to slideshows where the navigation is hidden.
+     * 
+     * @param string $css
+     * @param array $settings
+     * @param integer $slider_id
+     * @return string $css
+     */
+    public function remove_bottom_margin($class, $id, $settings) {
+        if (isset($settings["navigation"]) && $settings['navigation'] == 'false') {
+            return $class .= " nav-hidden";
+        }
+
+        // we don't want this filter hanging around if there's more than one slideshow on the page
+        remove_filter('metaslider_css_classes', array($this, 'remove_bottom_margin'), 11, 3);
+
+        return $class;
     }
 
     /**
@@ -80,6 +102,9 @@ class MetaFlexSlider extends MetaSlider {
         if (isset($settings["carouselMode"]) && $settings['carouselMode'] == 'true') {
             $css .= "\n        #metaslider_{$slider_id}.flexslider li {margin-right: {$this->carousel_item_margin}px;}";
         }
+
+        // we don't want this filter hanging around if there's more than one slideshow on the page
+        remove_filter('metaslider_css', array($this, 'get_carousel_css'), 11, 3);
 
         return $css;
     }

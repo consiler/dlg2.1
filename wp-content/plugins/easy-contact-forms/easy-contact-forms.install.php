@@ -44,6 +44,7 @@ function easycontactforms_install() {
 				w3cStyle varchar(50),
 				FixJSLoading2 tinyint(1),
 				AllowMarkupInEntries tinyint(1),
+				SkipWeeklyReport tinyint(1),
 				PRIMARY KEY  (id),
 				KEY Description (Description)) $collate;";
 				
@@ -271,886 +272,6 @@ function easycontactforms_install_data() {
 
 	$rows = array(
 		array(
-			'objtype' => 'CustomForms',
-			'method' => 'copy',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'DashBoardView',
-			'method' => 'getFormPageStatistics',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomForms',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'ContactTypes',
-			'method' => 'new',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFieldValues',
-			'method' => 'viewDetailed',
-			'name' => 'detailed',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFormEntryFiles',
-			'method' => 'view',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Orders',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'ContactTypes',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormFields',
-			'method' => 'viewDetailed',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormFields',
-			'method' => 'getSettingsForm',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormsEntries',
-			'method' => 'processEntry',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'Options',
-			'method' => 'new',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'ApplicationSettings',
-			'method' => 'setOptionValue',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'OrderFiles',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'OrderFiles',
-			'method' => 'viewDetailed',
-			'name' => 'detailed',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomForms',
-			'method' => 'refreshForm',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFormsEntries',
-			'method' => 'processEntry',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Orders_Products',
-			'method' => 'view',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomForms',
-			'method' => 'view',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomForms',
-			'method' => 'val',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'ApplicationSettings',
-			'method' => 'new',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFormFields',
-			'method' => 'updateOrder',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFormsEntries',
-			'method' => 'viewDetailed',
-			'name' => 'detailedMain',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'DashBoardView',
-			'method' => 'getFormStatistics',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFormEntryStatistics',
-			'method' => 'resetFormPageStatistics',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFields',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormFields',
-			'method' => 'deleteField',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'ContactTypes',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'ApplicationSettings',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFormEntryStatistics',
-			'method' => 'viewDetailed',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'Users',
-			'method' => 'getEUserASList',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFormFields',
-			'method' => 'view',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'OrderField1',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormEntryStatistics',
-			'method' => 'new',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'ProductUnitTypes',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'ContactField1',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'Users',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFormFields',
-			'method' => 'moveFieldSet',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Files',
-			'method' => 'deletefile',
-			'name' => 'main',
-			'role' => 'Guest',
-		),
-		array(
-			'objtype' => 'CustomFormEntryFiles',
-			'method' => 'viewDetailed',
-			'name' => 'detailedMain',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'AppTranslations',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'Tasks',
-			'method' => 'viewDetailed',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormFieldTypes',
-			'method' => 'view',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'ApplicationSettings',
-			'method' => 'allowPBLink',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormEntryStatistics',
-			'method' => 'resetFormPageStatistics',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Files',
-			'method' => 'download',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Orders',
-			'method' => 'viewDetailed',
-			'name' => 'detailed',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Tasks',
-			'method' => 'viewDetailed',
-			'name' => 'detailed',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFormFields',
-			'method' => 'updateFieldData',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomForms',
-			'method' => 'new',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFormEntryStatistics',
-			'method' => 'setFormPageStatisticsShowOnDashboard',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'Roles',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'ApplicationSettings',
-			'method' => 'allowPBLink',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Files',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'Products',
-			'method' => 'viewDetailed',
-			'name' => 'detailed',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFormFields',
-			'method' => 'addCustomField',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFieldValues',
-			'method' => 'viewDetailed',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormFields',
-			'method' => 'new',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomForms_MailingLists',
-			'method' => 'view',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomForms',
-			'method' => 'val',
-			'name' => 'main',
-			'role' => 'Guest',
-		),
-		array(
-			'objtype' => 'CustomFormFields',
-			'method' => 'viewDetailed',
-			'name' => 'detailedMain',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFormFields',
-			'method' => 'copyField',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'TaskStatuses',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'DashBoardView',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'RemoteSites',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'Files',
-			'method' => 'deletefile',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'Users',
-			'method' => 'getUserASList',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomForms',
-			'method' => 'add',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFormFields',
-			'method' => 'getSettingsForm',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Options',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'OrderFiles',
-			'method' => 'viewDetailed',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormEntryFiles',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormEntryStatistics',
-			'method' => 'setFormPageStatisticsShowOnDashboard',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Options',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFormFields',
-			'method' => 'updateOrder',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormEntryStatistics',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFieldTemplates',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'DashBoardView',
-			'method' => 'getEntryStatistics',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Priorities',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'ApplicationSettings',
-			'method' => 'view',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Tasks',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'DashBoardView',
-			'method' => 'getUserStatistics',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormFields',
-			'method' => 'copyField',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Users',
-			'method' => 'getEUserASList',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'Templates',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'Users',
-			'method' => 'view',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'ApplicationSettings',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormEntryStatistics',
-			'method' => 'viewDetailed',
-			'name' => 'detailedMain',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFormFieldTypes',
-			'method' => 'new',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomForms',
-			'method' => 'val',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'Files',
-			'method' => 'download',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomForms',
-			'method' => 'resetStatistics',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Files',
-			'method' => 'upload',
-			'name' => 'main',
-			'role' => 'Guest',
-		),
-		array(
-			'objtype' => 'Users',
-			'method' => 'new',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Files',
-			'method' => 'deletefile',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Locales',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'Orders',
-			'method' => 'viewDetailed',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'ContactFiles',
-			'method' => 'viewDetailed',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormsEntries',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomForms',
-			'method' => 'preview',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'OrderStatuses',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'ProductCategories',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFieldTypes',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'Orders_MailingLists',
-			'method' => 'view',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'ContactFiles',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomForms',
-			'method' => 'add',
-			'name' => 'main',
-			'role' => 'Guest',
-		),
-		array(
-			'objtype' => 'CustomFormEntryFiles',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFieldValues',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormsEntries',
-			'method' => 'new',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomForms_MailingLists',
-			'method' => 'view',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Users',
-			'method' => 'getUserASList',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'DashBoardView',
-			'method' => 'getEntryStatistics',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'DashBoardView',
-			'method' => 'getFormStatistics',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomForms',
-			'method' => 'refreshForm',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormEntryFiles',
-			'method' => 'viewDetailed',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'ContactFiles',
-			'method' => 'viewDetailed',
-			'name' => 'detailed',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Users',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'ApplicationSettings',
-			'method' => 'setOptionValue',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFormFields',
-			'method' => 'addCustomField',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFormEntryStatistics',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'OrderField2',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'ContactField2',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomForms',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Tasks_MailingLists',
-			'method' => 'view',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomForms',
-			'method' => 'copy',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'Files',
-			'method' => 'download',
-			'name' => 'main',
-			'role' => 'Guest',
-		),
-		array(
-			'objtype' => 'CustomFormEntryStatistics',
-			'method' => 'view',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Options',
-			'method' => 'view',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'DashBoardView',
-			'method' => 'getFormPageStatistics',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormFields',
-			'method' => 'deleteField',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFields',
-			'method' => 'viewDetailed',
-			'name' => 'detailed',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomFormEntryFiles',
-			'method' => 'new',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'TaskTypes',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormFields',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Files',
-			'method' => 'upload',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomForms',
-			'method' => 'add',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormFields',
-			'method' => 'moveFieldSet',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'ContactTypes',
-			'method' => 'view',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Files',
-			'method' => 'upload',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'CustomForms',
-			'method' => 'preview',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormFields',
-			'method' => 'updateFieldData',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormFieldTypes',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'Products',
-			'method' => 'show',
-			'name' => 'main',
-			'role' => 'Owner',
-		),
-		array(
-			'objtype' => 'CustomFormsEntries',
-			'method' => 'view',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-		array(
-			'objtype' => 'DashBoardView',
-			'method' => 'getUserStatistics',
-			'name' => 'main',
-			'role' => 'SuperAdmin',
-		),
-	);
-
-	$table_name = EasyContactFormsDB::wptn('#wp__easycontactforms_acl');
-	$wpdb->query('DELETE FROM ' . $table_name . ' WHERE 1;' );
-	foreach ($rows as $row) {
-		$wpdb->insert($table_name, $row);
-	}
-
-
-	$rows = array(
-		array(
 			'id' => 285,
 			'Description' => 'Employee',
 			'Name' => 'Employee',
@@ -1295,7 +416,37 @@ function easycontactforms_install_data() {
 
 	$rows = array(
 		array(
-			'id' => 622,
+			'id' => 3315,
+			'Description' => 'Please fill in the fields below',
+			'Type' => 2,
+			'Settings' => '<?xml version="1.0"?>
+<form>
+  
+  
+  <LabelTagName>h3</LabelTagName>
+  <Advanced/>
+  <LabelCSSClass/>
+  <LabelCSSStyle/>
+  <ShowDescription>off</ShowDescription>
+  <Description/>
+  <DescriptionPosition>top</DescriptionPosition>
+  <DescriptionCSSClass>ufo-customfields-container-description</DescriptionCSSClass>
+  <DescriptionCSSStyle/>
+  <SetStyle>off</SetStyle>
+  <CSSClass/>
+  <CSSStyle/>
+  <AddCF>off</AddCF>
+  <SetSize>off</SetSize>
+  <Width>230</Width>
+  <WidthUnit>px</WidthUnit>
+<ShowLabel><![CDATA[off]]></ShowLabel><Label><![CDATA[Please fill in the fields below]]></Label></form>',
+			'Template' => '<field><Container containertag="div" addcf="off"><![CDATA[<div>]]></Container></field>',
+			'ListPosition' => 3315,
+			'CustomForms' => 1,
+			'FieldSet' => 3315,
+		),
+		array(
+			'id' => 3316,
 			'Description' => 'Section',
 			'Type' => 2,
 			'Settings' => '<?xml version="1.0"?>
@@ -1322,67 +473,12 @@ function easycontactforms_install_data() {
     <Container containertag="div" addcf="off"><![CDATA[<div>
      ]]></Container>
 </field>',
-			'ListPosition' => 625,
-			'CustomForms' => 2,
-			'FieldSet' => 622,
+			'ListPosition' => 3316,
+			'CustomForms' => 1,
+			'FieldSet' => 3316,
 		),
 		array(
-			'id' => 625,
-			'Description' => 'Email',
-			'Type' => 5,
-			'Settings' => '<?xml version="1.0"?>
-<form>
-  
-  <Label>Email</Label>
-  
-  <Advanced/>
-  <LabelCSSClass/>
-  <LabelCSSStyle/>
-  <ShowDescription>off</ShowDescription>
-  <Description/>
-  <DescriptionPosition>bottom</DescriptionPosition>
-  <DescriptionCSSClass>ufo-customfields-field-description</DescriptionCSSClass>
-  <DescriptionCSSStyle/>
-  <SetDefaultValue>off</SetDefaultValue>
-  <DefaultValue>Your email</DefaultValue>
-  <IsBlankValue>on</IsBlankValue>
-  <DefaultValueCSSClass/>
-  <Required>on</Required>
-  <RequiredMessage>Please enter you email</RequiredMessage>
-  
-  <SetRequiredSuffix>on</SetRequiredSuffix>
-  <RequiredSuffix>*</RequiredSuffix>
-  <RequiredSuffixCSSClass>ufo-customfields-required-suffix</RequiredSuffixCSSClass>
-  <RequiredSuffixCSSStyle/>
-  
-  <InvalidCSSClass/>
-  <RequiredMessageCSSClass/>
-  <RequiredMessageCSSStyle/>
-  <Validate>on</Validate>
-  
-  <ValidMessageAbsolutePosition>on</ValidMessageAbsolutePosition>
-  <ValidMessage/>
-  <ValidMessagePosition>right</ValidMessagePosition>
-  <ValidCSSClass/>
-  <ValidCSSStyle/>
-  <SetStyle>off</SetStyle>
-  <CSSClass/>
-  <CSSStyle/>
-  <RowCSSClass/>
-  <SetSize>off</SetSize>
-  <Width>230</Width>
-  <WidthUnit>px</WidthUnit>
-  
-  
-  
-<LinkToAppField><![CDATA[Users_email]]></LinkToAppField><SetValidMessage><![CDATA[on]]></SetValidMessage><AbsolutePosition><![CDATA[on]]></AbsolutePosition><SetContactOptions><![CDATA[on]]></SetContactOptions><LabelPosition><![CDATA[left-align-left]]></LabelPosition><RequiredMessagePosition><![CDATA[right]]></RequiredMessagePosition><RegistredUsersOptions><![CDATA[showfill]]></RegistredUsersOptions><ShowLabel><![CDATA[on]]></ShowLabel></form>',
-			'Template' => '<field><ShowLabel position="left"><![CDATA[<label for=\'ufo-field-id-625\'  style=\'text-align:left\'>Email<span class=\'ufo-customfields-required-suffix\'>*</span></label>]]></ShowLabel><RequiredMessage position="right"><![CDATA[<div id=\'ufo-field-id-625-invalid\'  style=\'display:none\'></div>]]></RequiredMessage><ValidMessage position="right"><![CDATA[<div id=\'ufo-field-id-625-valid\'  style=\'display:none\'></div>]]></ValidMessage><Validation><![CDATA[<script type=\'text/javascript\'>ufoFormsConfig.validations.push({"events":{"blur":["required","email"]},"Required":true,"Validate":true,"showValid":true,"ValidMessageAbsolutePosition":true,"ValidMessagePosition":"right","RequiredMessage":"Please enter you email","AbsolutePosition":true,"RequiredMessagePosition":"right","id":"ufo-field-id-625","form":"ufo-form-id-2"});</script>]]></Validation><Input ><![CDATA[<input type=\'text\' id=\'ufo-field-id-625\' value=\'{id-625}\' name=\'id-625\' >]]></Input></field>',
-			'ListPosition' => 648,
-			'CustomForms' => 2,
-			'FieldSet' => 622,
-		),
-		array(
-			'id' => 627,
+			'id' => 3318,
 			'Description' => 'First name',
 			'Type' => 4,
 			'Settings' => '<?xml version="1.0"?>
@@ -1417,7 +513,7 @@ function easycontactforms_install_data() {
   
   
   
-  <ValidMessageAbsolutePosition>on</ValidMessageAbsolutePosition>
+  
   <ValidMessage/>
   <ValidMessagePosition>right</ValidMessagePosition>
   <ValidCSSClass/>
@@ -1432,58 +528,14 @@ function easycontactforms_install_data() {
   
   
   
-<Required><![CDATA[on]]></Required><Validate><![CDATA[on]]></Validate><LinkToAppField><![CDATA[Users_Name]]></LinkToAppField><Label><![CDATA[First name]]></Label><SetValidMessage><![CDATA[on]]></SetValidMessage><AbsolutePosition><![CDATA[on]]></AbsolutePosition><SetContactOptions><![CDATA[on]]></SetContactOptions><MinLength><![CDATA[2]]></MinLength><MaxLength><![CDATA[45]]></MaxLength><RequiredMessagePosition><![CDATA[right]]></RequiredMessagePosition><RequiredMessage><![CDATA[Your first name is required (from 2 to 45 characters)]]></RequiredMessage><LabelPosition><![CDATA[left-align-left]]></LabelPosition><RegistredUsersOptions><![CDATA[showfill]]></RegistredUsersOptions><ShowLabel><![CDATA[on]]></ShowLabel></form>',
-			'Template' => '<field>
-      <ShowLabel position="left"><![CDATA[
-   <label for=\'ufo-field-id-627\'  style=\'text-align:left\'>
-     First name         <span class=\'ufo-customfields-required-suffix\'>
-           *         </span>
-            </label>]]></ShowLabel>
-          <RequiredMessage position="right"><![CDATA[<div id=\'ufo-field-id-627-invalid\'  style=\'display:none\'></div>]]></RequiredMessage>
-        <ValidMessage position="right"><![CDATA[<div id=\'ufo-field-id-627-valid\'  style=\'display:none\'>
-        </div>]]></ValidMessage>
-        <Validation><![CDATA[<script type=\'text/javascript\'>ufoFormsConfig.validations.push({"events":{"blur":["required","minmax"]},"Required":true,"Validate":true,"showValid":true,"ValidMessageAbsolutePosition":true,"ValidMessagePosition":"right","RequiredMessage":"Your first name is required (from 2 to 45 characters)","AbsolutePosition":true,"RequiredMessagePosition":"right","min":"2","max":"45","id":"ufo-field-id-627","form":"ufo-form-id-2"});</script>]]></Validation>
-    <Input ><![CDATA[<input type=\'text\' id=\'ufo-field-id-627\' value=\'{id-627}\' name=\'id-627\' >]]></Input>
-</field>',
-			'ListPosition' => 643,
-			'CustomForms' => 2,
-			'FieldSet' => 622,
+<Required><![CDATA[on]]></Required><Label><![CDATA[First name]]></Label><AbsolutePosition><![CDATA[on]]></AbsolutePosition><RequiredMessagePosition><![CDATA[right]]></RequiredMessagePosition><LabelPosition><![CDATA[left-align-left]]></LabelPosition><ShowLabel><![CDATA[on]]></ShowLabel><Validate><![CDATA[off]]></Validate><MinLength><![CDATA[0]]></MinLength><MaxLength><![CDATA[0]]></MaxLength><SetContactOptions><![CDATA[off]]></SetContactOptions><RegistredUsersOptions><![CDATA[none]]></RegistredUsersOptions><LinkToAppField><![CDATA[]]></LinkToAppField><RequiredMessage><![CDATA[This field is required]]></RequiredMessage><SetValidMessage><![CDATA[off]]></SetValidMessage><ValidMessageAbsolutePosition><![CDATA[off]]></ValidMessageAbsolutePosition></form>',
+			'Template' => '<field><ShowLabel position="left"><![CDATA[<label for=\'ufo-field-id-3318\'  style=\'text-align:left\'>First name<span class=\'ufo-customfields-required-suffix\'>*</span></label>]]></ShowLabel><RequiredMessage position="right"><![CDATA[<div id=\'ufo-field-id-3318-invalid\'  style=\'display:none\'></div>]]></RequiredMessage><Validation><![CDATA[<script type=\'text/javascript\'>ufoFormsConfig.validations.push({"events":{"blur":["required"]},"Required":true,"RequiredMessage":"This field is required","AbsolutePosition":true,"RequiredMessagePosition":"right","id":"ufo-field-id-3318","form":"ufo-form-id-1"});</script>]]></Validation><Input ><![CDATA[<input type=\'text\' id=\'ufo-field-id-3318\' value=\'{id-3318}\' name=\'id-3318\' />]]></Input></field>',
+			'ListPosition' => 3318,
+			'CustomForms' => 1,
+			'FieldSet' => 3316,
 		),
 		array(
-			'id' => 630,
-			'Description' => 'Submit',
-			'Type' => 6,
-			'Settings' => '<?xml version="1.0"?>
-<form>
-  
-  
-  
-  <Advanced/>
-  <LabelCSSClass/>
-  <LabelCSSStyle/>
-  <SetStyle>off</SetStyle>
-  <CSSClass/>
-  <CSSStyle/>
-  <RowCSSClass/>
-  
-  <Width>100</Width>
-  <WidthUnit>px</WidthUnit>
-<Label><![CDATA[Submit]]></Label><InputPosition><![CDATA[left]]></InputPosition><ShowLabel><![CDATA[on]]></ShowLabel><SetSize><![CDATA[off]]></SetSize></form>',
-			'Template' => '<field>
-    <Validation><![CDATA[<script type=\'text/javascript\'>var c = {};c.id = \'ufo-field-id-630\';c.form = \'ufo-form-id-2\';c.Label = \'Submit\';ufoFormsConfig.submits.push(c);</script>]]></Validation>
-  <Input><![CDATA[<span id=\'ufo-field-id-630-span\'>
-                 <noscript>
-          <button type=\'submit\' id=\'ufo-field-id-630\' name=\'id-630\' >
-       Submit     </button>
-            </noscript>
-        </span>]]></Input>
-</field>',
-			'ListPosition' => 675,
-			'CustomForms' => 2,
-			'FieldSet' => 622,
-		),
-		array(
-			'id' => 647,
+			'id' => 3319,
 			'Description' => 'Last name',
 			'Type' => 4,
 			'Settings' => '<?xml version="1.0"?>
@@ -1518,7 +570,7 @@ function easycontactforms_install_data() {
   
   
   
-  <ValidMessageAbsolutePosition>on</ValidMessageAbsolutePosition>
+  
   <ValidMessage/>
   <ValidMessagePosition>right</ValidMessagePosition>
   <ValidCSSClass/>
@@ -1533,25 +585,69 @@ function easycontactforms_install_data() {
   
   
   
-<Label><![CDATA[Last name]]></Label><Required><![CDATA[on]]></Required><Validate><![CDATA[on]]></Validate><SetValidMessage><![CDATA[on]]></SetValidMessage><AbsolutePosition><![CDATA[on]]></AbsolutePosition><LinkToAppField><![CDATA[Users_Description]]></LinkToAppField><SetContactOptions><![CDATA[on]]></SetContactOptions><MinLength><![CDATA[2]]></MinLength><MaxLength><![CDATA[45]]></MaxLength><RequiredMessage><![CDATA[Your last name is required (from 2 to 45 characters)]]></RequiredMessage><RequiredMessagePosition><![CDATA[right]]></RequiredMessagePosition><RegistredUsersOptions><![CDATA[showfill]]></RegistredUsersOptions><ShowLabel><![CDATA[on]]></ShowLabel></form>',
-			'Template' => '<field>
-      <ShowLabel position="left"><![CDATA[
-   <label for=\'ufo-field-id-647\'  style=\'text-align:left\'>
-     Last name         <span class=\'ufo-customfields-required-suffix\'>
-           *         </span>
-            </label>]]></ShowLabel>
-          <RequiredMessage position="right"><![CDATA[<div id=\'ufo-field-id-647-invalid\'  style=\'display:none\'></div>]]></RequiredMessage>
-        <ValidMessage position="right"><![CDATA[<div id=\'ufo-field-id-647-valid\'  style=\'display:none\'>
-        </div>]]></ValidMessage>
-        <Validation><![CDATA[<script type=\'text/javascript\'>ufoFormsConfig.validations.push({"events":{"blur":["required","minmax"]},"Required":true,"Validate":true,"showValid":true,"ValidMessageAbsolutePosition":true,"ValidMessagePosition":"right","RequiredMessage":"Your last name is required (from 2 to 45 characters)","AbsolutePosition":true,"RequiredMessagePosition":"right","min":"2","max":"45","id":"ufo-field-id-647","form":"ufo-form-id-2"});</script>]]></Validation>
-    <Input ><![CDATA[<input type=\'text\' id=\'ufo-field-id-647\' value=\'{id-647}\' name=\'id-647\' >]]></Input>
-</field>',
-			'ListPosition' => 647,
-			'CustomForms' => 2,
-			'FieldSet' => 622,
+<Label><![CDATA[Last name]]></Label><Required><![CDATA[on]]></Required><AbsolutePosition><![CDATA[on]]></AbsolutePosition><RequiredMessagePosition><![CDATA[right]]></RequiredMessagePosition><ShowLabel><![CDATA[on]]></ShowLabel><Validate><![CDATA[off]]></Validate><MinLength><![CDATA[0]]></MinLength><MaxLength><![CDATA[0]]></MaxLength><SetContactOptions><![CDATA[off]]></SetContactOptions><RegistredUsersOptions><![CDATA[none]]></RegistredUsersOptions><LinkToAppField><![CDATA[]]></LinkToAppField><RequiredMessage><![CDATA[This field is required]]></RequiredMessage><SetValidMessage><![CDATA[off]]></SetValidMessage><ValidMessageAbsolutePosition><![CDATA[off]]></ValidMessageAbsolutePosition></form>',
+			'Template' => '<field><ShowLabel position="left"><![CDATA[<label for=\'ufo-field-id-3319\'  style=\'text-align:left\'>Last name<span class=\'ufo-customfields-required-suffix\'>*</span></label>]]></ShowLabel><RequiredMessage position="right"><![CDATA[<div id=\'ufo-field-id-3319-invalid\'  style=\'display:none\'></div>]]></RequiredMessage><Validation><![CDATA[<script type=\'text/javascript\'>ufoFormsConfig.validations.push({"events":{"blur":["required"]},"Required":true,"RequiredMessage":"This field is required","AbsolutePosition":true,"RequiredMessagePosition":"right","id":"ufo-field-id-3319","form":"ufo-form-id-1"});</script>]]></Validation><Input ><![CDATA[<input type=\'text\' id=\'ufo-field-id-3319\' value=\'{id-3319}\' name=\'id-3319\' />]]></Input></field>',
+			'ListPosition' => 3319,
+			'CustomForms' => 1,
+			'FieldSet' => 3316,
 		),
 		array(
-			'id' => 648,
+			'id' => 3320,
+			'Description' => 'Email',
+			'Type' => 5,
+			'Settings' => '<?xml version="1.0"?>
+<form>
+  
+  <Label>Email</Label>
+  
+  <Advanced/>
+  <LabelCSSClass/>
+  <LabelCSSStyle/>
+  <ShowDescription>off</ShowDescription>
+  <Description/>
+  <DescriptionPosition>bottom</DescriptionPosition>
+  <DescriptionCSSClass>ufo-customfields-field-description</DescriptionCSSClass>
+  <DescriptionCSSStyle/>
+  <SetDefaultValue>off</SetDefaultValue>
+  <DefaultValue>Your email</DefaultValue>
+  <IsBlankValue>on</IsBlankValue>
+  <DefaultValueCSSClass/>
+  <Required>on</Required>
+  <RequiredMessage>Please enter you email</RequiredMessage>
+  
+  <SetRequiredSuffix>on</SetRequiredSuffix>
+  <RequiredSuffix>*</RequiredSuffix>
+  <RequiredSuffixCSSClass>ufo-customfields-required-suffix</RequiredSuffixCSSClass>
+  <RequiredSuffixCSSStyle/>
+  
+  <InvalidCSSClass/>
+  <RequiredMessageCSSClass/>
+  <RequiredMessageCSSStyle/>
+  <Validate>on</Validate>
+  
+  
+  <ValidMessage/>
+  <ValidMessagePosition>right</ValidMessagePosition>
+  <ValidCSSClass/>
+  <ValidCSSStyle/>
+  <SetStyle>off</SetStyle>
+  <CSSClass/>
+  <CSSStyle/>
+  <RowCSSClass/>
+  <SetSize>off</SetSize>
+  <Width>230</Width>
+  <WidthUnit>px</WidthUnit>
+  
+  
+  
+<AbsolutePosition><![CDATA[on]]></AbsolutePosition><LabelPosition><![CDATA[left-align-left]]></LabelPosition><RequiredMessagePosition><![CDATA[right]]></RequiredMessagePosition><ShowLabel><![CDATA[on]]></ShowLabel><RegistredUsersOptions><![CDATA[none]]></RegistredUsersOptions><LinkToAppField><![CDATA[]]></LinkToAppField><SetContactOptions><![CDATA[off]]></SetContactOptions><SetValidMessage><![CDATA[off]]></SetValidMessage><ValidMessageAbsolutePosition><![CDATA[off]]></ValidMessageAbsolutePosition></form>',
+			'Template' => '<field><ShowLabel position="left"><![CDATA[<label for=\'ufo-field-id-3320\'  style=\'text-align:left\'>Email<span class=\'ufo-customfields-required-suffix\'>*</span></label>]]></ShowLabel><RequiredMessage position="right"><![CDATA[<div id=\'ufo-field-id-3320-invalid\'  style=\'display:none\'></div>]]></RequiredMessage><Validation><![CDATA[<script type=\'text/javascript\'>ufoFormsConfig.validations.push({"events":{"blur":["required","email"]},"Required":true,"Validate":true,"RequiredMessage":"Please enter you email","AbsolutePosition":true,"RequiredMessagePosition":"right","id":"ufo-field-id-3320","form":"ufo-form-id-1"});</script>]]></Validation><Input ><![CDATA[<input type=\'text\' id=\'ufo-field-id-3320\' value=\'{id-3320}\' name=\'id-3320\' />]]></Input></field>',
+			'ListPosition' => 3320,
+			'CustomForms' => 1,
+			'FieldSet' => 3316,
+		),
+		array(
+			'id' => 3321,
 			'Description' => 'Your request',
 			'Type' => 10,
 			'Settings' => '<?xml version="1.0"?>
@@ -1585,8 +681,8 @@ function easycontactforms_install_data() {
   <Validate>off</Validate>
   <MinLength/>
   <MaxLength/>
-  <SetValidMessage>off</SetValidMessage>
-  <ValidMessageAbsolutePosition>on</ValidMessageAbsolutePosition>
+  
+  
   <ValidMessage/>
   <ValidMessagePosition>right</ValidMessagePosition>
   <ValidCSSClass/>
@@ -1600,69 +696,36 @@ function easycontactforms_install_data() {
   <WidthUnit>px</WidthUnit>
   
   <HeightUnit>px</HeightUnit>
-<Label><![CDATA[Your request]]></Label><Description><![CDATA[Please provide us with your request details]]></Description><DescriptionPosition><![CDATA[top]]></DescriptionPosition><Required><![CDATA[on]]></Required><SetSize><![CDATA[on]]></SetSize><LabelPosition><![CDATA[top-align-left]]></LabelPosition><ShowDescription><![CDATA[off]]></ShowDescription><Height><![CDATA[150]]></Height><Width><![CDATA[360]]></Width><ShowLabel><![CDATA[on]]></ShowLabel><SetContactOptions>off</SetContactOptions><SetStyle><![CDATA[off]]></SetStyle></form>',
-			'Template' => '<field>
-      <ShowLabel position="top"><![CDATA[
-   <label for=\'ufo-field-id-648\'  style=\'text-align:left\'>
-     Your request         <span class=\'ufo-customfields-required-suffix\'>
-           *         </span>
-            </label>]]></ShowLabel>
-          <RequiredMessage position="right"><![CDATA[<div id=\'ufo-field-id-648-invalid\'  style=\'display:none\'></div>]]></RequiredMessage>
-          <Validation><![CDATA[<script type=\'text/javascript\'>ufoFormsConfig.validations.push({"events":{"blur":["required"]},"Required":true,"RequiredMessage":"This field is required","AbsolutePosition":true,"RequiredMessagePosition":"right","id":"ufo-field-id-648","form":"ufo-form-id-2"});</script>]]></Validation>
-    <Input  width="360px"><![CDATA[<textarea id=\'ufo-field-id-648\' name=\'id-648\'  style=\'height:150px;width:360px\'>{id-648}</textarea>]]></Input>
-</field>',
-			'ListPosition' => 660,
-			'CustomForms' => 2,
-			'FieldSet' => 622,
+<Label><![CDATA[Your request]]></Label><Description><![CDATA[Please provide us with your request details]]></Description><DescriptionPosition><![CDATA[top]]></DescriptionPosition><Required><![CDATA[on]]></Required><SetSize><![CDATA[on]]></SetSize><LabelPosition><![CDATA[top-align-left]]></LabelPosition><ShowDescription><![CDATA[off]]></ShowDescription><Width><![CDATA[360]]></Width><ShowLabel><![CDATA[on]]></ShowLabel><SetContactOptions>off</SetContactOptions><SetStyle><![CDATA[off]]></SetStyle><Height><![CDATA[100]]></Height><SetValidMessage><![CDATA[off]]></SetValidMessage><ValidMessageAbsolutePosition><![CDATA[off]]></ValidMessageAbsolutePosition></form>',
+			'Template' => '<field><ShowLabel position="top"><![CDATA[<label for=\'ufo-field-id-3321\'  style=\'text-align:left\'>Your request<span class=\'ufo-customfields-required-suffix\'>*</span></label>]]></ShowLabel><RequiredMessage position="right"><![CDATA[<div id=\'ufo-field-id-3321-invalid\'  style=\'display:none\'></div>]]></RequiredMessage><Validation><![CDATA[<script type=\'text/javascript\'>ufoFormsConfig.validations.push({"events":{"blur":["required"]},"Required":true,"RequiredMessage":"This field is required","AbsolutePosition":true,"RequiredMessagePosition":"right","id":"ufo-field-id-3321","form":"ufo-form-id-1"});</script>]]></Validation><Input  width="360px"><![CDATA[<textarea id=\'ufo-field-id-3321\' name=\'id-3321\'  style=\'height:100px;width:360px\'>{id-3321}</textarea>]]></Input></field>',
+			'ListPosition' => 3321,
+			'CustomForms' => 1,
+			'FieldSet' => 3316,
 		),
 		array(
-			'id' => 659,
-			'Description' => 'Last Name',
-			'Type' => 14,
-			'Settings' => '<?xml version="1.0"?>
-<form><LabelPosition>left-align-left</LabelPosition><Advanced/><LabelCSSClass/><LabelCSSStyle/><ShowDescription>off</ShowDescription><Description/><DescriptionPosition>bottom</DescriptionPosition><DescriptionCSSClass>ufo-customfields-field-description</DescriptionCSSClass><DescriptionCSSStyle/><SetDefaultValue>off</SetDefaultValue><DefaultValue/><IsBlankValue>on</IsBlankValue><DefaultValueCSSClass/><Required>off</Required><RequiredMessage>This field is required</RequiredMessage><RequiredMessagePosition>right</RequiredMessagePosition><SetRequiredSuffix>on</SetRequiredSuffix><RequiredSuffix>*</RequiredSuffix><RequiredSuffixCSSClass>ufo-customfields-required-suffix</RequiredSuffixCSSClass><RequiredSuffixCSSStyle/><AbsolutePosition>on</AbsolutePosition><InvalidCSSClass/><RequiredMessageCSSClass/><RequiredMessageCSSStyle/><Validate>off</Validate><MinLength/><MaxLength/><SetValidMessage>off</SetValidMessage><ValidMessageAbsolutePosition>on</ValidMessageAbsolutePosition><ValidMessage/><ValidMessagePosition>right</ValidMessagePosition><ValidCSSClass/><ValidCSSStyle/><SetStyle>off</SetStyle><CSSClass/><CSSStyle/><RowCSSClass/><SetSize>off</SetSize><Width>230</Width><WidthUnit>px</WidthUnit><Label><![CDATA[Last Name]]></Label><ShowLabel><![CDATA[on]]></ShowLabel></form>',
-			'Template' => '<field>
-      <ShowLabel position="left"><![CDATA[
-   <label for=\'ufo-field-id-659\'  style=\'text-align:left\'>
-     Last Name   </label>]]></ShowLabel>
-            <Input ><![CDATA[<input type=\'text\' id=\'ufo-field-id-659\' value=\'{id-659}\' name=\'id-659\' >]]></Input>
-</field>',
-			'ListPosition' => 639,
-			'CustomForms' => 2,
-			'FieldSet' => 622,
-		),
-		array(
-			'id' => 675,
-			'Description' => 'Please fill in the fields below',
-			'Type' => 2,
+			'id' => 3322,
+			'Description' => 'Submit',
+			'Type' => 6,
 			'Settings' => '<?xml version="1.0"?>
 <form>
   
   
-  <LabelTagName>h3</LabelTagName>
+  
   <Advanced/>
   <LabelCSSClass/>
   <LabelCSSStyle/>
-  <ShowDescription>off</ShowDescription>
-  <Description/>
-  <DescriptionPosition>top</DescriptionPosition>
-  <DescriptionCSSClass>ufo-customfields-container-description</DescriptionCSSClass>
-  <DescriptionCSSStyle/>
   <SetStyle>off</SetStyle>
   <CSSClass/>
   <CSSStyle/>
-  <AddCF>off</AddCF>
-  <SetSize>off</SetSize>
-  <Width>230</Width>
+  <RowCSSClass/>
+  
+  <Width>100</Width>
   <WidthUnit>px</WidthUnit>
-<ShowLabel><![CDATA[off]]></ShowLabel><Label><![CDATA[Please fill in the fields below]]></Label></form>',
-			'Template' => '<field>
-    <Container containertag="div" addcf="off"><![CDATA[<div>
-     ]]></Container>
-</field>',
-			'ListPosition' => 624,
-			'CustomForms' => 2,
-			'FieldSet' => 675,
+<InputPosition><![CDATA[left]]></InputPosition><ShowLabel><![CDATA[on]]></ShowLabel><SetSize><![CDATA[off]]></SetSize><Label><![CDATA[Submit]]></Label></form>',
+			'Template' => '<field><Validation><![CDATA[<script type=\'text/javascript\'>var c = {};c.id = \'ufo-field-id-3322\';c.form = \'ufo-form-id-1\';c.Label = \'Submit\';ufoFormsConfig.submits.push(c);</script>]]></Validation><Input><![CDATA[<span id=\'ufo-field-id-3322-span\'><noscript><button type=\'submit\' id=\'ufo-field-id-3322\' name=\'id-3322\' >Submit</button></noscript></span>]]></Input></field>',
+			'ListPosition' => 3322,
+			'CustomForms' => 1,
+			'FieldSet' => 3316,
 		),
 	);
 
@@ -1677,48 +740,26 @@ function easycontactforms_install_data() {
 
 	$rows = array(
 		array(
-			'id' => 2,
-			'Description' => 'Contact form',
+			'id' => 1,
+			'Description' => 'Simple contact form',
 			'NotificationSubject' => 'New request received',
 			'SendFrom' => 'Champion Forms',
 			'SendConfirmation' => 0,
 			'ConfirmationSubject' => 'We have received your request',
 			'Redirect' => 0,
-			'ShortCode' => '[easy_contact_forms fid=2]',
+			'ShortCode' => '[easy_contact_forms fid=1]',
 			'Template' => 0,
 			'ObjectOwner' => 286,
 			'SubmissionSuccessText' => 'Thank you for contacting us! We are glad to hear from you.',
-			'HTML' => '<script type=\'text/javascript\'>if (typeof(ecfconfig) == \'undefined\'){var ecfconfig={};}ecfconfig[2]={};var ufobaseurl =  \'http://workhorse/wordpress-3.3/wp-admin/admin-ajax.php\';if (typeof(ufoFormsConfig) == \'undefined\') {var ufoFormsConfig = {};ufoFormsConfig.submits = [];ufoFormsConfig.resets = [];ufoFormsConfig.validations = [];}</script><link href=\'http://workhorse/wordpress-3.3/wp-content/plugins/champion-forms/forms/styles/easyform/css/std.css?ver=1.5.5\' rel=\'stylesheet\' type=\'text/css\'/><style type=\'text/css\'>.ufo-row-659{display:none;}</style><div class=\'ufo-form\' id=\'ufo-form-id-2\'><noscript><form method=\'post\'><input type=\'hidden\' name=\'cf-no-script\' value=\'1\'/></noscript><input type=\'hidden\' value=\'ufo-form-id-2\' name=\'hidden-2\' id=\'ufo-form-hidden-2\'/><input type=\'hidden\' value=\'{__pagename}\' name=\'ufo-form-pagename\' id=\'ufo-form-pagename\'/>{preview}<input type=\'hidden\' value=\'{ufosignature}\' name=\'ufo-sign\' id=\'ufo-sign\'/><div>
-     </div><div>
-     <div class=\'ufo-fieldtype-14 ufo-customform-row ufo-row-659\' style=\'margin-top:2px;{display-659}\'><div class=\'ufo-cell-659-2-row\' id=\'ufo-cell-659-2\'><span class=\'ufo-cell-left\' id=\'ufo-cell-659-2-left\'>
-   <label for=\'ufo-field-id-659\'  style=\'text-align:left\'>
-     Last Name   </label></span><span class=\'ufo-cell-center\' id=\'ufo-cell-659-2-center\'><input type=\'text\' id=\'ufo-field-id-659\' value=\'{id-659}\' name=\'id-659\' ></span></div></div><div class=\'ufo-fieldtype-4 ufo-customform-row ufo-row-627\' style=\'margin-top:2px;{display-627}\'><div class=\'ufo-cell-627-2-row\' id=\'ufo-cell-627-2\'><span class=\'ufo-cell-left\' id=\'ufo-cell-627-2-left\'>
-   <label for=\'ufo-field-id-627\'  style=\'text-align:left\'>
-     First name         <span class=\'ufo-customfields-required-suffix\'>
-           *         </span>
-            </label></span><span class=\'ufo-cell-center\' id=\'ufo-cell-627-2-center\'><script type=\'text/javascript\'>ufoFormsConfig.validations.push({"events":{"blur":["required","minmax"]},"Required":true,"Validate":true,"showValid":true,"ValidMessageAbsolutePosition":true,"ValidMessagePosition":"right","RequiredMessage":"Your first name is required (from 2 to 45 characters)","AbsolutePosition":true,"RequiredMessagePosition":"right","min":"2","max":"45","id":"ufo-field-id-627","form":"ufo-form-id-2"});</script><input type=\'text\' id=\'ufo-field-id-627\' value=\'{id-627}\' name=\'id-627\' ></span><span class=\'ufo-cell-right\' id=\'ufo-cell-627-2-right\'><div id=\'ufo-field-id-627-invalid\'  style=\'display:none\'></div><div id=\'ufo-field-id-627-valid\'  style=\'display:none\'>
-        </div></span></div></div><div class=\'ufo-fieldtype-4 ufo-customform-row ufo-row-647\' style=\'margin-top:2px;{display-647}\'><div class=\'ufo-cell-647-2-row\' id=\'ufo-cell-647-2\'><span class=\'ufo-cell-left\' id=\'ufo-cell-647-2-left\'>
-   <label for=\'ufo-field-id-647\'  style=\'text-align:left\'>
-     Last name         <span class=\'ufo-customfields-required-suffix\'>
-           *         </span>
-            </label></span><span class=\'ufo-cell-center\' id=\'ufo-cell-647-2-center\'><script type=\'text/javascript\'>ufoFormsConfig.validations.push({"events":{"blur":["required","minmax"]},"Required":true,"Validate":true,"showValid":true,"ValidMessageAbsolutePosition":true,"ValidMessagePosition":"right","RequiredMessage":"Your last name is required (from 2 to 45 characters)","AbsolutePosition":true,"RequiredMessagePosition":"right","min":"2","max":"45","id":"ufo-field-id-647","form":"ufo-form-id-2"});</script><input type=\'text\' id=\'ufo-field-id-647\' value=\'{id-647}\' name=\'id-647\' ></span><span class=\'ufo-cell-right\' id=\'ufo-cell-647-2-right\'><div id=\'ufo-field-id-647-invalid\'  style=\'display:none\'></div><div id=\'ufo-field-id-647-valid\'  style=\'display:none\'>
-        </div></span></div></div><div class=\'ufo-fieldtype-5 ufo-customform-row ufo-row-625\' style=\'margin-top:2px;{display-625}\'><div class=\'ufo-cell-625-2-row\' id=\'ufo-cell-625-2\'><span class=\'ufo-cell-left\' id=\'ufo-cell-625-2-left\'><label for=\'ufo-field-id-625\'  style=\'text-align:left\'>Email<span class=\'ufo-customfields-required-suffix\'>*</span></label></span><span class=\'ufo-cell-center\' id=\'ufo-cell-625-2-center\'><script type=\'text/javascript\'>ufoFormsConfig.validations.push({"events":{"blur":["required","email"]},"Required":true,"Validate":true,"showValid":true,"ValidMessageAbsolutePosition":true,"ValidMessagePosition":"right","RequiredMessage":"Please enter you email","AbsolutePosition":true,"RequiredMessagePosition":"right","id":"ufo-field-id-625","form":"ufo-form-id-2"});</script><input type=\'text\' id=\'ufo-field-id-625\' value=\'{id-625}\' name=\'id-625\' ></span><span class=\'ufo-cell-right\' id=\'ufo-cell-625-2-right\'><div id=\'ufo-field-id-625-invalid\'  style=\'display:none\'></div><div id=\'ufo-field-id-625-valid\'  style=\'display:none\'></div></span></div></div><div class=\'ufo-fieldtype-10 ufo-customform-row ufo-row-648\' style=\'margin-top:2px;{display-648}\'><div class=\'ufo-cell-648-1-row\' id=\'ufo-cell-648-1\'><span class=\'ufo-cell-center\' style=\'width:360px\' id=\'ufo-cell-648-1-center\'>
-   <label for=\'ufo-field-id-648\'  style=\'text-align:left\'>
-     Your request         <span class=\'ufo-customfields-required-suffix\'>
-           *         </span>
-            </label></span><span class=\'ufo-cell-right\' id=\'ufo-cell-648-1-right\'><p style=\'display:none\'></p></span></div><div class=\'ufo-cell-648-2-row\' id=\'ufo-cell-648-2\'><span class=\'ufo-cell-center\' style=\'width:360px\' id=\'ufo-cell-648-2-center\'><script type=\'text/javascript\'>ufoFormsConfig.validations.push({"events":{"blur":["required"]},"Required":true,"RequiredMessage":"This field is required","AbsolutePosition":true,"RequiredMessagePosition":"right","id":"ufo-field-id-648","form":"ufo-form-id-2"});</script><textarea id=\'ufo-field-id-648\' name=\'id-648\'  style=\'height:150px;width:360px\'>{id-648}</textarea></span><span class=\'ufo-cell-right\' id=\'ufo-cell-648-2-right\'><div id=\'ufo-field-id-648-invalid\'  style=\'display:none\'></div></span></div></div><div class=\'ufo-fieldtype-6 ufo-customform-row ufo-row-630\' style=\'margin-top:2px;{display-630}\'><div class=\'ufo-cell-630-2-row\' id=\'ufo-cell-630-2\'><span class=\'ufo-cell-center\' id=\'ufo-cell-630-2-center\'><script type=\'text/javascript\'>var c = {};c.id = \'ufo-field-id-630\';c.form = \'ufo-form-id-2\';c.Label = \'Submit\';ufoFormsConfig.submits.push(c);</script><span id=\'ufo-field-id-630-span\'>
-                 <noscript>
-          <button type=\'submit\' id=\'ufo-field-id-630\' name=\'id-630\' >
-       Submit     </button>
-            </noscript>
-        </span></span></div></div></div><div id=\'ufo-form-id-2-message\'></div><noscript></form></noscript></div>',
+			'HTML' => '<script type=\'text/javascript\'>if (typeof(ecfconfig) == \'undefined\'){var ecfconfig={};}ecfconfig[1]={};var ufobaseurl =  \'http://localhost/wordpress-3.3/wp-admin/admin-ajax.php\';if (typeof(ufoFormsConfig) == \'undefined\') {var ufoFormsConfig = {};ufoFormsConfig.submits = [];ufoFormsConfig.resets = [];ufoFormsConfig.validations = [];}ufoFormsConfig.phonenumberre = /^(\+{0,1}\d{1,2})*\s*(\(?\d{3}\)?\s*)*\d{3}(-{0,1}|\s{0,1})\d{2}(-{0,1}|\s{0,1})\d{2}$/;</script><link href=\'http://localhost/wordpress-3.3/wp-content/plugins/easy-contact-forms/forms/styles/easyform/css/std.css?ver=1.4.9\' rel=\'stylesheet\' type=\'text/css\'/><div class=\'ufo-form\' id=\'ufo-form-id-1\'><noscript><form method=\'post\'><input type=\'hidden\' name=\'cf-no-script\' value=\'1\'/></noscript><input type=\'hidden\' value=\'ufo-form-id-1\' name=\'hidden-1\' id=\'ufo-form-hidden-1\'/><input type=\'hidden\' value=\'{__pagename}\' name=\'ufo-form-pagename\' id=\'ufo-form-pagename\'/>{preview}<input type=\'hidden\' value=\'{ufosignature}\' name=\'ufo-sign\' id=\'ufo-sign\'/><div></div><div>
+     <div class=\'ufo-fieldtype-4 ufo-customform-row ufo-row-3318\' style=\'margin-top:2px;{display-3318}\'><div class=\'ufo-cell-3318-2-row\' id=\'ufo-cell-3318-2\'><span class=\'ufo-cell-left\' id=\'ufo-cell-3318-2-left\'><label for=\'ufo-field-id-3318\'  style=\'text-align:left\'>First name<span class=\'ufo-customfields-required-suffix\'>*</span></label></span><span class=\'ufo-cell-center\' id=\'ufo-cell-3318-2-center\'><script type=\'text/javascript\'>ufoFormsConfig.validations.push({"events":{"blur":["required"]},"Required":true,"RequiredMessage":"This field is required","AbsolutePosition":true,"RequiredMessagePosition":"right","id":"ufo-field-id-3318","form":"ufo-form-id-1"});</script><input type=\'text\' id=\'ufo-field-id-3318\' value=\'{id-3318}\' name=\'id-3318\' /></span><span class=\'ufo-cell-right\' id=\'ufo-cell-3318-2-right\'><div id=\'ufo-field-id-3318-invalid\'  style=\'display:none\'></div></span></div></div><div class=\'ufo-fieldtype-4 ufo-customform-row ufo-row-3319\' style=\'margin-top:2px;{display-3319}\'><div class=\'ufo-cell-3319-2-row\' id=\'ufo-cell-3319-2\'><span class=\'ufo-cell-left\' id=\'ufo-cell-3319-2-left\'><label for=\'ufo-field-id-3319\'  style=\'text-align:left\'>Last name<span class=\'ufo-customfields-required-suffix\'>*</span></label></span><span class=\'ufo-cell-center\' id=\'ufo-cell-3319-2-center\'><script type=\'text/javascript\'>ufoFormsConfig.validations.push({"events":{"blur":["required"]},"Required":true,"RequiredMessage":"This field is required","AbsolutePosition":true,"RequiredMessagePosition":"right","id":"ufo-field-id-3319","form":"ufo-form-id-1"});</script><input type=\'text\' id=\'ufo-field-id-3319\' value=\'{id-3319}\' name=\'id-3319\' /></span><span class=\'ufo-cell-right\' id=\'ufo-cell-3319-2-right\'><div id=\'ufo-field-id-3319-invalid\'  style=\'display:none\'></div></span></div></div><div class=\'ufo-fieldtype-5 ufo-customform-row ufo-row-3320\' style=\'margin-top:2px;{display-3320}\'><div class=\'ufo-cell-3320-2-row\' id=\'ufo-cell-3320-2\'><span class=\'ufo-cell-left\' id=\'ufo-cell-3320-2-left\'><label for=\'ufo-field-id-3320\'  style=\'text-align:left\'>Email<span class=\'ufo-customfields-required-suffix\'>*</span></label></span><span class=\'ufo-cell-center\' id=\'ufo-cell-3320-2-center\'><script type=\'text/javascript\'>ufoFormsConfig.validations.push({"events":{"blur":["required","email"]},"Required":true,"Validate":true,"RequiredMessage":"Please enter you email","AbsolutePosition":true,"RequiredMessagePosition":"right","id":"ufo-field-id-3320","form":"ufo-form-id-1"});</script><input type=\'text\' id=\'ufo-field-id-3320\' value=\'{id-3320}\' name=\'id-3320\' /></span><span class=\'ufo-cell-right\' id=\'ufo-cell-3320-2-right\'><div id=\'ufo-field-id-3320-invalid\'  style=\'display:none\'></div></span></div></div><div class=\'ufo-fieldtype-10 ufo-customform-row ufo-row-3321\' style=\'margin-top:2px;{display-3321}\'><div class=\'ufo-cell-3321-1-row\' id=\'ufo-cell-3321-1\'><span class=\'ufo-cell-center\' style=\'width:360px\' id=\'ufo-cell-3321-1-center\'><label for=\'ufo-field-id-3321\'  style=\'text-align:left\'>Your request<span class=\'ufo-customfields-required-suffix\'>*</span></label></span><span class=\'ufo-cell-right\' id=\'ufo-cell-3321-1-right\'><p style=\'display:none\'></p></span></div><div class=\'ufo-cell-3321-2-row\' id=\'ufo-cell-3321-2\'><span class=\'ufo-cell-center\' style=\'width:360px\' id=\'ufo-cell-3321-2-center\'><script type=\'text/javascript\'>ufoFormsConfig.validations.push({"events":{"blur":["required"]},"Required":true,"RequiredMessage":"This field is required","AbsolutePosition":true,"RequiredMessagePosition":"right","id":"ufo-field-id-3321","form":"ufo-form-id-1"});</script><textarea id=\'ufo-field-id-3321\' name=\'id-3321\'  style=\'height:100px;width:360px\'>{id-3321}</textarea></span><span class=\'ufo-cell-right\' id=\'ufo-cell-3321-2-right\'><div id=\'ufo-field-id-3321-invalid\'  style=\'display:none\'></div></span></div></div><div class=\'ufo-fieldtype-6 ufo-customform-row ufo-row-3322\' style=\'margin-top:2px;{display-3322}\'><div class=\'ufo-cell-3322-2-row\' id=\'ufo-cell-3322-2\'><span class=\'ufo-cell-center\' id=\'ufo-cell-3322-2-center\'><script type=\'text/javascript\'>var c = {};c.id = \'ufo-field-id-3322\';c.form = \'ufo-form-id-1\';c.Label = \'Submit\';ufoFormsConfig.submits.push(c);</script><span id=\'ufo-field-id-3322-span\'><noscript><button type=\'submit\' id=\'ufo-field-id-3322\' name=\'id-3322\' >Submit</button></noscript></span></span></div></div></div><div id=\'ufo-form-id-1-message\'></div><noscript></form></noscript></div>',
 			'ShowSubmissionSuccess' => 1,
 			'WidthUnit' => 'px',
 			'LineHeight' => 2,
 			'LineHeightUnit' => 'px',
 			'Style' => 'easyform',
-			'Impressions' => 1,
-			'IncludeVisitorsAddressInReplyTo' => 1,
+			'TotalEntries' => 2,
+			'IncludeVisitorsAddressInReplyTo' => 0,
 			'SendConfirmationAsText' => 0,
 			'SendNotificationAsText' => 0,
 			'IncludeIntoReporting' => 1,
@@ -1786,6 +827,1396 @@ function easycontactforms_install_data() {
 		if (!in_array($rid, $existent)) {
 			$wpdb->insert($table_name, $row);
 		}
+	}
+
+
+	$rows = array(
+		array(
+			'objtype' => 'CustomFormEntryFiles',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Tasks',
+			'method' => 'viewDetailed',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'ContactField2',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'TaskTypes',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'ContactField1',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'OrderFiles',
+			'method' => 'viewDetailed',
+			'name' => 'detailedMain',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Products',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Files',
+			'method' => 'upload',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'OrderField1',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'ContactField1',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'fixOrder',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'DashBoardView',
+			'method' => 'getDashboardAPIText',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFormEntryStatistics',
+			'method' => 'dismissPointer',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'OrderField1',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Users',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'addCustomField',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'OrderStatuses',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Orders_MailingLists',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'add',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'Locales',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'OrderField2',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'OrderStatuses',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'ProductUnitTypes',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'val',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormEntryStatistics',
+			'method' => 'setFormPageStatisticsShowOnDashboard',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'OrderField1',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'ContactTypes',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'ProductUnitTypes',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFields',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'OrderStatuses',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'getSettingsForm',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'Tasks',
+			'method' => 'viewDetailed',
+			'name' => 'detailedMain',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Priorities',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomForms_MailingLists',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'val',
+			'name' => 'main',
+			'role' => 'Guest',
+		),
+		array(
+			'objtype' => 'CustomFields',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Users',
+			'method' => 'getUserASList',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Roles',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormsEntries',
+			'method' => 'viewDetailed',
+			'name' => 'detailedMain',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'preview',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Options',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Roles',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'ProductCategories',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Orders',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'ApplicationSettings',
+			'method' => 'allowPBLink',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFieldTemplates',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFieldTypes',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFields',
+			'method' => 'viewDetailed',
+			'name' => 'detailedMain',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'DashBoardView',
+			'method' => 'getFormStatistics',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'DashBoardView',
+			'method' => 'getFormPageStatistics',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'OrderField2',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormEntryStatistics',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'installTemplate',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomForms_MailingLists',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'Files',
+			'method' => 'download',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Templates',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Files',
+			'method' => 'deletefile',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'ApplicationSettings',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormFieldTypes',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'TaskStatuses',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'ProductCategories',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFormsEntries',
+			'method' => 'processEntry',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Locales',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'Products',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'Orders_Products',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'ApplicationSettings',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'ContactFiles',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'TaskStatuses',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Products',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Roles',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'ContactFiles',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'moveFieldSet',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'DashBoardView',
+			'method' => 'getEntryStatistics',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Products',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'DashBoardView',
+			'method' => 'getUserStatistics',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'TaskTypes',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'installTemplate',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'ProductUnitTypes',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'ContactTypes',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'DashBoardView',
+			'method' => 'getFormStatistics',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'TaskTypes',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'fixOrder',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'Tasks',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'OrderField2',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'resetStatistics',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'OrderFiles',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormFieldTypes',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Users',
+			'method' => 'getUserASList',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFormEntryStatistics',
+			'method' => 'viewDetailed',
+			'name' => 'detailedMain',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Users',
+			'method' => 'getEUserASList',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'getSettingsForm',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormEntryStatistics',
+			'method' => 'getImage',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'AppTranslations',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Priorities',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'preview',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'moveFieldSet',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFormFieldTypes',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'updateFieldData',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFieldValues',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'copy',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'ContactFiles',
+			'method' => 'viewDetailed',
+			'name' => 'detailedMain',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFields',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormEntryStatistics',
+			'method' => 'getImage',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFields',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'Orders_MailingLists',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'ContactFiles',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Templates',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'DashBoardView',
+			'method' => 'getUserStatistics',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'deleteField',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'ApplicationSettings',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'ProductCategories',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'OrderFiles',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'viewDetailed',
+			'name' => 'detailedMain',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'ProductCategories',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'DashBoardView',
+			'method' => 'getFormPageStatistics',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Orders',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Orders',
+			'method' => 'viewDetailed',
+			'name' => 'detailedMain',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFieldTypes',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'DashBoardView',
+			'method' => 'getEntryStatistics',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'ContactField1',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'copyField',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'DashBoardView',
+			'method' => 'getDashboardAPIText',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFieldTypes',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'ApplicationSettings',
+			'method' => 'allowPBLink',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Orders',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'DashBoardView',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormsEntries',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'ContactField1',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'ApplicationSettings',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'add',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'AppTranslations',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'ContactFiles',
+			'method' => 'viewDetailed',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFormsEntries',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'ContactField2',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Priorities',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'AppTranslations',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'OrderStatuses',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'refreshForm',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'ContactField2',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Files',
+			'method' => 'upload',
+			'name' => 'main',
+			'role' => 'Guest',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'add',
+			'name' => 'main',
+			'role' => 'Guest',
+		),
+		array(
+			'objtype' => 'OrderField2',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Priorities',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Tasks_MailingLists',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'TaskStatuses',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'ProductUnitTypes',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'ContactFiles',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFormEntryStatistics',
+			'method' => 'setFormPageStatisticsShowOnDashboard',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'ContactField2',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFieldValues',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormEntryStatistics',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormEntryFiles',
+			'method' => 'viewDetailed',
+			'name' => 'detailedMain',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'deleteField',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFieldValues',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFieldValues',
+			'method' => 'viewDetailed',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'TaskStatuses',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFieldValues',
+			'method' => 'viewDetailed',
+			'name' => 'detailedMain',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'val',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'Tasks_MailingLists',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'copy',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'updateFieldData',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormsEntries',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Users',
+			'method' => 'getEUserASList',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFieldValues',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'updateOrder',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFormEntryStatistics',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'RemoteSites',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFormEntryFiles',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Options',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFormEntryStatistics',
+			'method' => 'dismissPointer',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFormEntryStatistics',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Roles',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Tasks',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormEntryFiles',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Templates',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Files',
+			'method' => 'deletefile',
+			'name' => 'main',
+			'role' => 'Guest',
+		),
+		array(
+			'objtype' => 'Tasks',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'getAvailableTemplates',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Users',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormEntryFiles',
+			'method' => 'viewDetailed',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'ContactTypes',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Orders',
+			'method' => 'viewDetailed',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'TaskTypes',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'AppTranslations',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'Templates',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Files',
+			'method' => 'upload',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'OrderField1',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'viewDetailed',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'Files',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormEntryStatistics',
+			'method' => 'viewDetailed',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'ApplicationSettings',
+			'method' => 'setOptionValue',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'getAvailableTemplates',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'updateOrder',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFieldTemplates',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Options',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'OrderFiles',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormEntryStatistics',
+			'method' => 'resetFormPageStatistics',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFieldTemplates',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'ApplicationSettings',
+			'method' => 'setOptionValue',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Options',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'OrderFiles',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'copyField',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'Tasks',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Users',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Products',
+			'method' => 'viewDetailed',
+			'name' => 'detailedMain',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Users',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormsEntries',
+			'method' => 'processEntry',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'ContactTypes',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormEntryStatistics',
+			'method' => 'resetFormPageStatistics',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFormFields',
+			'method' => 'addCustomField',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Files',
+			'method' => 'download',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'Files',
+			'method' => 'download',
+			'name' => 'main',
+			'role' => 'Guest',
+		),
+		array(
+			'objtype' => 'CustomFieldTypes',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomFieldTemplates',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Locales',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Orders_Products',
+			'method' => 'view',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'OrderFiles',
+			'method' => 'viewDetailed',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'Locales',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'Orders',
+			'method' => 'new',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+		array(
+			'objtype' => 'CustomFormEntryFiles',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'CustomForms',
+			'method' => 'refreshForm',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'Files',
+			'method' => 'show',
+			'name' => 'main',
+			'role' => 'Owner',
+		),
+		array(
+			'objtype' => 'Files',
+			'method' => 'deletefile',
+			'name' => 'main',
+			'role' => 'SuperAdmin',
+		),
+	);
+
+	$table_name = EasyContactFormsDB::wptn('#wp__easycontactforms_acl');
+	$wpdb->query('DELETE FROM ' . $table_name . ' WHERE 1;' );
+	foreach ($rows as $row) {
+		$wpdb->insert($table_name, $row);
 	}
 
 
@@ -1917,6 +2348,14 @@ function easycontactforms_install_data() {
 			'ValueField' => 1,
 		),
 		array(
+			'id' => 19,
+			'Description' => 'Text Paragraph',
+			'CssClass' => 'ufo-customfield-textparagraph',
+			'Settings' => '<form><ShowLabel>on</ShowLabel><Label>Text Paragraph</Label><LabelPosition>left-align-left</LabelPosition><Advanced/><LabelCSSClass/><LabelCSSStyle/><ShowDescription>off</ShowDescription><Description/><DescriptionCSSClass>ufo-customfields-field-description</DescriptionCSSClass><DescriptionCSSStyle/><SetSize>off</SetSize><Width>230</Width><WidthUnit>px</WidthUnit></form>',
+			'ListPosition' => 450,
+			'ValueField' => 0,
+		),
+		array(
 			'id' => 20,
 			'Description' => 'Google Map',
 			'CssClass' => 'ufo-customfield-googlemap',
@@ -1961,7 +2400,7 @@ function easycontactforms_install_data() {
 			'FileFolder' => 'files',
 			'FixJSLoading' => 0,
 			'FixStatus0' => 0,
-			'ProductVersion' => '1.4.7',
+			'ProductVersion' => '1.4.9',
 			'InitTime' => 0,
 			'ShowPoweredBy' => 0,
 			'DateFormat' => 'Y-m-d^%Y-%m-%d^\d{4}-\d{2}-\d{2}$^2012-01-25',
@@ -1971,6 +2410,7 @@ function easycontactforms_install_data() {
 			'w3cStyle' => 'easyform',
 			'FixJSLoading2' => 0,
 			'AllowMarkupInEntries' => 0,
+			'SkipWeeklyReport' => 0,
 		),
 	);
 
@@ -2015,7 +2455,7 @@ function easycontactforms_install_data() {
 	require_once dirName(__FILE__) . DIRECTORY_SEPARATOR . 'easy-contact-forms-root.php';
 	require_once dirName(__FILE__) . DIRECTORY_SEPARATOR . 'easy-contact-forms-applicationsettings.php';
 	$as = EasyContactFormsApplicationSettings::getInstance();
-	$as->set('ProductVersion', '1.4.7');
+	$as->set('ProductVersion', '1.4.9');
 	$as->save();}
 
 

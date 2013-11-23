@@ -116,17 +116,18 @@ li.ufo-customform-fieldset-filled a.ufo-customform-field-delete
 textarea.textinput{font-size: 12px;padding: 3px;}
 
 /*	buttons	*/
-span.button{
+#divEasyContactForms span.button{
 	border-radius: 4px;
 	background1: #3b97cd;
 	background: #eee url(../images/backgrounds.png) 0 -87px repeat-x;
 	border: 1px solid #bbb;
 	line-height: 26px;
+	height: 28px;
 	padding: 0px;
 	float: left;
 	margin: 7px 1px
 }
-span.button span{
+#divEasyContactForms span.button span{
 	height: 24px;
 	padding: 0 8px;
 	display: block;
@@ -134,21 +135,23 @@ span.button span{
 	border-top: 1px solid #fff;
 	border-bottom: 1px solid transparent
 }
-span.button a{line-height: 24px;}
-span.button:hover, span.button.hover, li.ufo-customform-fieldtype-li:hover, 
+#divEasyContactForms span.button a{line-height: 24px;}
+#divEasyContactForms span.button:hover, 
+#divEasyContactForms span.button.hover, 
+li.ufo-customform-fieldtype-li:hover, 
 li.ufo-customform-fieldtype-li-fs:hover{background: #ffffff url(../images/backgrounds.png) 0 -111px repeat-x;border-color: #888;}
 
 button::-moz-focus-inner{padding: 0 !important;border: 0 none !important;}
 div.internalbutton{line-height: 24px;cursor: default;}
-button.internalbutton{border: 0;height: 22px;background-color: transparent;}
+#divEasyContactForms button.internalbutton{border: 0;height: 22px;background-color: transparent;}
 
-span.button a, 
-.ufo-imagebutton a, 
-span.internalimage a, 
-span.internalimage a:hover{background-color: transparent !important;background-repeat: no-repeat  !important;text-decoration: none;}
+#divEasyContactForms span.button a, 
+#divEasyContactForms .ufo-imagebutton a, 
+#divEasyContactForms span.internalimage a, 
+#divEasyContactForms span.internalimage a:hover{background-color: transparent !important;background-repeat: no-repeat  !important;text-decoration: none;}
 
 
-.ufo-imagebutton a{
+#divEasyContactForms .ufo-imagebutton a{
 	display: block;
 	width: 21px;
 	height: 22px;
@@ -157,10 +160,9 @@ span.internalimage a:hover{background-color: transparent !important;background-r
 	border-radius: 4px;
 	background-position: center center !important
 }
-.ufo-imagebutton a:hover{border: 1px solid #aaa !important;background-color: #ffffff !important;background-repeat: no-repeat  !important;text-decoration: none;}
+#divEasyContactForms .ufo-imagebutton a:hover{border: 1px solid #aaa !important;background-color: #ffffff !important;background-repeat: no-repeat  !important;text-decoration: none;}
 
-
-span.internalimage a{padding:1px 4px 1px 20px;background-position: center left !important;color: #333;}
+#divEasyContactForms span.internalimage a{padding:1px 4px 1px 20px;background-position: center left !important;color: #333;}
 
 a.ufo-mtmlink-button{width: 16px;height: 16px;margin: 1px 0 2px 0;display: block;}
 
@@ -793,3 +795,15 @@ div.ufo-as-hint{
 div.ufo-div-comment{font-size:12px;border-radius:10px;background:#f8f8f8;overflow:hidden;margin:10px;border:1px solid #ccc;padding-right:10px;}
 div.ufo-div-comment-header{background:#eee;padding:10px;;float:left;margin: 0 10px 0 0;border-radius:0 0 6px 0;}
 div.ufo-div-comment-comment{padding:10px;}
+
+div.cf-logo{background: transparent url(../images/cflogo.png) 10px 10px no-repeat;}
+
+#divEasyContactForms span.new-from-tpl-button a{
+	width: auto;
+	background-position: 2px center !important;
+	padding: 0 6px 0 20px;
+	height: 19px;
+	padding-top: 3px;
+	color: black;
+	padding-bottom: 1px;
+}

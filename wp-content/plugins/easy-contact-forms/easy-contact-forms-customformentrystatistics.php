@@ -113,6 +113,98 @@ class EasyContactFormsCustomFormEntryStatistics extends EasyContactFormsBase {
 	}
 
 	/**
+	 * 	dismissPointer
+	 *
+	 * 	Dismisses the pointer
+	 *
+	 * @param array $map
+	 * 	request data
+	 */
+	function dismissPointer($map) {
+
+		update_user_meta( get_current_user_id(), 'easycontactforms_stat_pointer', time());
+
+	}
+
+	/**
+	 * 	getImage
+	 *
+	 * @param  $map
+	 * 
+	 *
+	 * @return
+	 * 
+	 */
+	function getImage($map) {
+
+		$daycount = 30;
+
+		$fid = intval($map['oid']);
+		$dayseconds = 24 * 60 * 60;
+		$currentmonth = strtotime(date('Y-m-d', time())) - $daycount * $dayseconds;
+
+		$query = "SELECT
+				CustomFormsEntries.Date AS Date
+			FROM
+				#wp__easycontactforms_customformsentries AS CustomFormsEntries
+			WHERE
+				CustomFormsEntries.Date>='$currentmonth'
+				AND CustomFormsEntries.CustomForms='$fid'
+			ORDER BY
+				Date";
+
+		$dates = EasyContactFormsDB::getObjects($query);
+
+		$countarray = array();
+
+		for ($i = 1; $i < ($daycount + 1); $i++) {
+			$countarray[$currentmonth + $dayseconds * $i] = 0;
+		}
+
+		foreach($dates as $date) {
+			$daydate = strtotime(date('Y-m-d', $date->Date));
+			if (!isset($countarray[$daydate])) {
+				continue;
+			}
+			$countarray[$daydate]++;
+		}
+
+		$iwidth = isset($map['a']) ? 150 : 150;
+		$iheight = isset($map['a']) ? 30 : 50;
+
+		$data = $countarray;
+		$im = imagecreatetruecolor($iwidth, $iheight);
+
+		$white = imagecolorallocate($im, 255, 255, 255);
+		$green = imagecolorallocate($im, 0, 127, 0);
+		$gray = imagecolorallocate($im, 220, 220, 220);
+		$red = imagecolorallocate($im, 255, 220, 220);
+
+		imagefilledrectangle($im, 0, 0, $iwidth, $iheight, $white);
+
+		$max = max($data);
+		$hcoef =	$iheight/$max;
+
+		$counter = 0;
+		foreach ($data as $day => $entries) {
+			$barwidth=$iwidth/$daycount;
+			$barheight = $entries * $hcoef;
+			$ypos = $iheight - $barheight;
+			$xpos = $counter * $barwidth;
+			if (date('D', $day) == 'Sun') {
+				imagefilledrectangle($im, $xpos, 0, $xpos + $barwidth, $iheight, $red);
+				imageline($im, $xpos, 0, $xpos, $iheight, $gray);
+			}
+			imagefilledrectangle($im, $xpos, $ypos, $xpos + $barwidth - 2, $iheight, $green);
+			$counter++;
+		}
+		imagerectangle($im, 0, 0, $iwidth-1, $iheight-1, $gray);
+		imagepng($im);
+		imagedestroy($im);
+
+	}
+
+	/**
 	 * 	getShowHideButton
 	 *
 	 * @param  $map
@@ -279,6 +371,14 @@ class EasyContactFormsCustomFormEntryStatistics extends EasyContactFormsBase {
 
 		$dispmethod = $dispmap["m"];
 		switch ($dispmethod) {
+
+			case 'dismissPointer':
+				$this->dismissPointer($dispmap);
+				return NULL;
+
+			case 'getImage':
+				$this->getImage($dispmap);
+				return NULL;
 
 			case 'resetFormPageStatistics':
 				$this->resetFormPageStatistics($dispmap);

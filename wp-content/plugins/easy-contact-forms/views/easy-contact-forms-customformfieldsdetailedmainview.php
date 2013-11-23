@@ -55,6 +55,16 @@
                  )
               );?>
             </div>
+            <div class='ufo-float-left'>
+              <?php echo EasyContactFormsIHTML::getButton(
+                 array(
+                   'title' => EasyContactFormsT::get('FixOrder'),
+                   'events' => " onclick='ufo.fixOrder($obj->jsconfig)'",
+                   'iclass' => " class='icon_button_apply' ",
+                   'bclass' => "ufo-imagebutton",
+                 )
+              );?>
+            </div>
             <div style='clear:left'></div>
           </div>
         </div>

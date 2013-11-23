@@ -87,17 +87,18 @@ label.ufo-label-top{clear: right;}
 textarea.textinput{font-size: 12px;padding: 3px;}
 
 /*  buttons  */
-span.button{
+#divEasyContactForms span.button{
   border-radius: 4px;
   background1: #3b97cd;
   background: #eee url(../images/backgrounds.png) 0 -87px repeat-x;
   border: 1px solid #bbb;
   line-height: 24px;
+  height: 28px;
   padding: 0px;
   float: left;
   margin: 5px 1px
 }
-span.button span{
+#divEasyContactForms span.button span{
   height: 22px;
   padding: 0 8px;
   display: block;
@@ -985,3 +986,5 @@ div.ufo-as-hint{
 div.ufo-div-comment{font-size:12px;border-radius:10px;background:#f8f8f8;overflow:hidden;margin:10px;border:1px solid #ccc;padding-right:10px;}
 div.ufo-div-comment-header{background:#eee;padding:10px;;float:left;margin: 0 10px 0 0;border-radius:0 0 6px 0;}
 div.ufo-div-comment-comment{padding:10px;}
+
+div.cf-logo{background: transparent url(../images/cflogo.png) 10px 10px no-repeat;}

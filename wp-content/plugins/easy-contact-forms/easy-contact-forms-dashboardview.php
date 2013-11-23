@@ -88,6 +88,9 @@ class EasyContactFormsDashBoardView extends EasyContactFormsForms {
       <?php echo EasyContactFormsT::get('CustomForm');?>
     </th>
     <th>
+      <?php echo EasyContactFormsT::get('EntriesPerDayLast30Days');?>
+    </th>
+    <th>
       <?php echo EasyContactFormsT::get('EntryCount');?>
     </th>
     <th>
@@ -98,6 +101,9 @@ class EasyContactFormsDashBoardView extends EasyContactFormsForms {
     <tr>
       <td>
         <a onclick='ufo.redirect({m:"show", oid:<?php echo $obj->id;?>, t:"CustomForms"})'><?php echo $obj->Description;?></a>
+      </td>
+      <td>
+        <img src='<?php echo admin_url("admin-ajax.php"); ?>?t=CustomFormEntryStatistics&m=getImage&oid=<?php echo $obj->id;?>&ac=1&action=easy-contact-forms-submit&time=<?php echo time();?>&a=1' style='margin:-5px'/>
       </td>
       <td>
         <?php echo $obj->EntryCount;?>

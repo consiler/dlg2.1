@@ -259,7 +259,7 @@ ufoForms = new function(){
 		if (resp.status == 1) {
 			function redirect(){
 				if (resp.url) {
-					var t = setTimeout('document.location.href = "' + resp.url + '"',messageDelay);
+					var t = setTimeout('window.location.href = "' + resp.url + '"',messageDelay);
 				}
 			}
 			function success() {

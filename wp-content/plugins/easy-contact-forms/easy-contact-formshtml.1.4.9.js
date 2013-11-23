@@ -1333,7 +1333,7 @@ ufoForms = new function(){
 		if (resp.status == 1) {
 			function redirect(){
 				if (resp.url) {
-					var t = setTimeout('document.location.href = "' + resp.url + '"',messageDelay);
+					var t = setTimeout('window.location.href = "' + resp.url + '"',messageDelay);
 				}
 			}
 			function success() {
@@ -2246,6 +2246,33 @@ ufo.allowPBLink = function(elid) {
 	AppMan.Ajax.request(ajx);
 };
 
+ufo.api = function(action, args){
+	var config = {};
+	config.t = 'Root';
+	config.m = 'api';
+	config.m2 = action;
+	config.ac=1;
+	if (args.args) {
+		config.a =  AppMan.JSON.encode(args.args);
+	}
+	var ajx = {};
+	ajx.url = ajaxurl;
+	ajx.params = config;
+	if (args.elid) {
+		var elid = args.elid;  
+		ajx.success = function(data) {
+			jQuery('#'+elid).html(data);
+			if (args.disable) {
+				AppMan.enableInput();
+			}
+		};
+	}
+	if (args.disable) {
+		AppMan.disableInput();
+	}
+	AppMan.Ajax.request(ajx);  
+};
+
 ufo.apply = function(config){
 	config = AppMan.Utils.getConfig(config);
 	if (!AppMan.ufoForms.validateForm(config.hash, true)) return;
@@ -2429,6 +2456,45 @@ ufo.insertContent = function(el, icFieldId, icValue, direct, useTMCE) {
 
 ufo.setFormPageStatisticsShowOnDashboard = function(el, show, config){};
 ufo.resetFormPageStatistics = function(el, config){};
+
+ufo.fixOrder = function(config) {
+	if (!confirm(AppMan.resources.ItWillReorderFieldsets)) return;
+	config = AppMan.Utils.getConfig(config);
+	config.t = 'CustomFormFields';
+	config.m = 'fixOrder';
+	AppMan.Filter.filter(config);
+};
+
+ufo.getAvailableTemplates = function() {
+	config = AppMan.Utils.getConfig('CustomForms');
+	config.m = 'getAvailableTemplates';
+	ufoCf.direct(config, 'AvailableTemplates', true);
+};
+
+ufo.installTemplate = function(args) {
+	config = AppMan.Utils.getConfig({});
+	config.t = 'CustomForms';
+	config.m = 'installTemplate';
+	config.a = args;
+	if (args.inpid) {
+		config.a.key = jQuery('#'+args.inpid).val();
+	}
+	var ajx = {};
+	ajx.params = config;
+	ajx.success = function(data) {
+		data = AppMan.JSON.decode(data);
+		alert(data.message);
+		AppMan.enableInput();
+	};
+	AppMan.disableInput();
+	AppMan.Ajax.request(ajx);
+
+};
+
+/* dashboard api */
+jQuery(document).ready( function(){
+	ufo.api('dashboard', {elid:'easycontactforms-dashboard-api'});
+});
 
 
 jQuery(document).ready(function(){

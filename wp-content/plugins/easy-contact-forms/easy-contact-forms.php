@@ -2,7 +2,7 @@
 /*
 Plugin Name: Easy Contact Forms
 Plugin URI: http://easy-contact-forms.com 
-Version: 1.4.7
+Version: 1.4.9
 Author: ChampionForms.com
 Author URI: http://championforms.com
 Description: Easy Contact Forms. Easy to create. Easy to fill out. Easy to change. Easy to manage. Easy to protect	
@@ -40,13 +40,14 @@ if ( isset($easycontactforms) && function_exists('register_activation_hook') ){
 	add_shortcode( 'easy_contact_forms_frontend', 'easycontactforms_entrypoint_shortcode' );
 	add_shortcode( 'easy_contact_forms', 'easycontactforms_formentrypoint' );
 	add_action('wp_head', 'easycontactforms_w3c_load_styles');
+	add_action('admin_enqueue_scripts', 'easycontactforms_admin_pointers_header');
 	add_action('phpmailer_init', 'easycontactforms_phpmailer_init');	
 	add_action( 'plugins_loaded', 'easycontactforms_update_db_check');
 
 } 
 function easycontactforms_update_db_check() {
 
-	$db_version = '1.4.7';
+	$db_version = '1.4.9';
 	require_once 'easy-contact-forms-root.php'; 		
 	require_once 'easy-contact-forms-applicationsettings.php'; 		
 	$as = EasyContactFormsApplicationSettings::getInstance();
@@ -56,8 +57,9 @@ function easycontactforms_update_db_check() {
 }
 
 function easycontactforms_main_page() {
-		add_menu_page( 'Easy Contact Forms', 'Contact Forms', 'manage_options', 'easy-contact-forms-main-page', 'easycontactforms_entrypoint'); 
-		add_submenu_page('easy-contact-forms-main-page', __('Easy Contact Forms Support'), __('Support'), 'manage_options', 'easy-contact-forms-support',  'easycontactforms_get_support_page');
+	global $easycontactforms_menu_page_id, $easycontactforms_support_page_id;
+	$easycontactforms_menu_page_id = add_menu_page( 'Easy Contact Forms', 'Contact Forms', 'manage_options', 'easy-contact-forms-main-page', 'easycontactforms_entrypoint'); 
+	$easycontactforms_support_page_id = add_submenu_page('easy-contact-forms-main-page', __('Easy Contact Forms Support'), __('Support'), 'manage_options', 'easy-contact-forms-support',  'easycontactforms_get_support_page');
  
 }
 
@@ -107,6 +109,214 @@ function easycontactforms_w3c_load_styles() {
 }
 
 /**
+ * 	easycontactforms_admin_pointers_header
+ *
+ * 	Creates admin pointer environment
+ *
+ */
+
+function easycontactforms_admin_pointers_header() {
+
+	if (easycontactforms_admin_pointers_check()) {
+		add_action( 'admin_print_footer_scripts', 'easycontactforms_admin_pointers_footer' );
+
+		wp_enqueue_script('wp-pointer');
+		wp_enqueue_style('wp-pointer');
+
+		wp_register_style( 'easycontactforms-pointer', plugins_url('styles/pointer.css', __FILE__) );
+		wp_enqueue_style( 'easycontactforms-pointer' );
+
+	}
+}
+
+/**
+ * 	easycontactforms_admin_pointers_check
+ *
+ * 	Checks if the pointer should be shown
+ *
+ */
+
+function easycontactforms_admin_pointers_check() {
+
+	$screen = get_current_screen();
+	if ($screen->id != 'dashboard') {
+		return FALSE;
+	}
+
+	require_once 'easy-contact-forms-root.php';
+
+	$currentweek = time() - 7 * 24 * 60 * 60;
+	$dismissedlast = (int) get_user_meta( get_current_user_id(), 'easycontactforms_stat_pointer', TRUE );
+	if ($dismissedlast > $currentweek) {
+		return FALSE;
+	}
+
+	require_once 'easy-contact-forms-applicationsettings.php';
+	$as = EasyContactFormsApplicationSettings::getInstance();
+	$skipreport = $as->get('SkipWeeklyReport');
+	if ($skipreport) {
+		return FALSE;
+	}
+
+	$userid = get_current_user_id();
+	$adminrole = '1';
+
+	$query = "SELECT Users.id FROM #wp__easycontactforms_users AS Users WHERE Users.CMSId = '$userid' AND Users.Role = '$adminrole'";
+
+	$users = EasyContactFormsDB::getObjects($query);
+	if (sizeof($users) < 1) {
+		return FALSE;
+	}
+
+	$query = "SELECT
+				COUNT(CustomFormsEntries.id) AS Entries,
+				CustomFormsEntries.CustomForms
+			FROM
+				#wp__easycontactforms_customformsentries AS CustomFormsEntries
+			INNER JOIN
+				#wp__easycontactforms_customforms AS CustomForms
+					ON
+						CustomFormsEntries.CustomForms=CustomForms.id
+			WHERE
+				CustomFormsEntries.Date>='$currentweek'
+			GROUP BY CustomFormsEntries.CustomForms
+			ORDER BY
+				Entries DESC";
+
+	$entries = EasyContactFormsDB::getObjects($query);
+	if (sizeof($entries) == 0) {
+		return FALSE;
+	}
+
+	if ($entries[0]->Entries < 5) {
+		return FALSE;
+	}
+
+	$admin_pointers = easycontactforms_admin_pointers();
+	foreach ( $admin_pointers as $pointer => $array ) {
+		if ( $array['active'] )
+			 return TRUE;
+	}
+}
+
+/**
+ * 	easycontactforms_admin_pointers_footer
+ *
+ * 	Echoes JavaScript
+ *
+ */
+
+function easycontactforms_admin_pointers_footer() {
+
+	$admin_pointers = easycontactforms_admin_pointers();
+		 ?>
+	<script type="text/javascript">
+	/* <![CDATA[ */
+	( function($) {
+		 <?php
+		 foreach ( $admin_pointers as $pointer => $array ) {
+				if ( $array['active'] ) {
+					 ?>
+					 $( '<?php echo $array['anchor_id']; ?>' ).pointer( {
+							content: '<?php echo $array['content']; ?>',
+							position: {
+							edge: '<?php echo $array['edge']; ?>',
+							align: '<?php echo $array['align']; ?>'
+					 },
+							close: function() {
+
+								 $.post( ajaxurl, {t:'CustomFormEntryStatistics', m:'dismissPointer', action:'easy-contact-forms-submit', ac:1} );
+
+							}
+					 } ).pointer( 'open' );
+					 <?php
+				}
+		 }
+		 ?>
+	} )(jQuery);
+	jQuery(document).ready(function(){
+		jQuery.post( ajaxurl, {t:'Root', m:'api', m2:'pointer', action:'easy-contact-forms-submit', ac:1} )
+		.done(function(html){jQuery( "#easy-contact-forms-pointer" ).html(html);});
+	});
+	/* ]]> */
+	</script>
+		 <?php
+}
+
+/**
+ * 	easycontactforms_admin_pointers
+ *
+ */
+
+function easycontactforms_admin_pointers() {
+
+	require_once 'easy-contact-forms-root.php';
+	 $version = '1';
+	 $prefix = 'easycontactforms_admin_pointers' . $version . '_';
+
+	$currentweek = time() - 7 * 24 * 60 * 60;
+
+	$query = "SELECT
+				COUNT(CustomFormsEntries.id) AS Entries,
+				CustomForms.Description,
+				CustomFormsEntries.CustomForms
+			FROM
+				#wp__easycontactforms_customformsentries AS CustomFormsEntries
+			INNER JOIN
+				#wp__easycontactforms_customforms AS CustomForms
+					ON
+						CustomFormsEntries.CustomForms=CustomForms.id
+			WHERE
+				CustomFormsEntries.Date>='$currentweek'
+			GROUP BY CustomForms.Description,
+				CustomFormsEntries.CustomForms
+			ORDER BY
+				Entries DESC
+			LIMIT 2";
+
+	$entries = EasyContactFormsDB::getObjects($query);
+	$entry = $entries[0];
+
+	$fid = $entry->CustomForms;
+	$time = time();
+
+	$imgurl = admin_url( 'admin-ajax.php' ) . "?t=CustomFormEntryStatistics&m=getImage&oid=$fid&ac=1&action=easy-contact-forms-submit&time=$time";
+
+	$new_pointer_content = '<h3>' . __( 'Contact Form Performance' ) . '</h3>';
+	$new_pointer_content .= '<div style="width:300px;padding:0 15px;">';
+	$new_pointer_content .= '<div style="padding:0px;width:150px;float:left;">';
+	$new_pointer_content .= '<span style="font-size:10px;color:gray">Popular form</span>';
+	$new_pointer_content .= '<h5 style="margin:0 0 4px 0;font-size:12px;">' . $entry->Description . '</h5>';
+
+	$new_pointer_content .= '<a	href="admin.php?page=easy-contact-forms-main-page" style="display:block;height:50px;clear:both;width:150px;"><img src="' . $imgurl . '"></a>';
+
+	$new_pointer_content .= '<span style="font-size:9px;font-family:Arial;">Submissions per day. Last 30 days</span><br>';
+	$new_pointer_content .= '</div>';
+
+	$new_pointer_content .= '<div id="easy-contact-forms-pointer" style="float:left;width:110px;padding-left:20px;"></div>';
+
+	$new_pointer_content .= '<div style="clear:both;height:1px"></div>';
+	$new_pointer_content .= '<table class="ufo-pointer-table">';
+	$new_pointer_content .= '<tr><th>Form Entries</th><th>Last 7 days</th></tr>';
+	foreach($entries as $entry) {
+		$new_pointer_content .= '<tr><td>' . $entry->Description . '</td><td>' . $entry->Entries . '</td></tr>';
+	}
+	$new_pointer_content .= '</table>';
+	$new_pointer_content .= '<a href="admin.php?page=easy-contact-forms-main-page">Show full information</a>';
+	$new_pointer_content .= '</div>';
+
+	return array(
+		$prefix . 'new_items' => array(
+			 'content' => $new_pointer_content,
+			 'anchor_id' => '#toplevel_page_easy-contact-forms-main-page',
+			 'edge' => 'left',
+			 'align' => 'center',
+			 'active' => true
+		),
+	);
+}
+
+/**
  * 	Easy Contact Forms form entrypoint
  *
  * @param array $map
@@ -135,10 +345,10 @@ function easycontactforms_formentrypoint($map) {
 	$js = '';
 	$as = EasyContactFormsApplicationSettings::getInstance();
 	if (!$as->get('FixJSLoading')) {
-		wp_enqueue_script('ufoforms', plugins_url('easy-contact-forms-forms.1.4.7.js', __FILE__));
+		wp_enqueue_script('ufoforms', plugins_url('easy-contact-forms-forms.1.4.9.js', __FILE__));
 	} else {
 
-		$js .= '<script type="text/javascript" src="' . plugins_url('easy-contact-forms-forms.1.4.7.js', __FILE__) . '"></script>';
+		$js .= '<script type="text/javascript" src="' . plugins_url('easy-contact-forms-forms.1.4.9.js', __FILE__) . '"></script>';
 
 	}
 	if ($as->get('FixJSLoading2')) {
@@ -259,7 +469,7 @@ function easycontactforms_entrypoint() {
 	wp_enqueue_script('jquery-ui-mouse');
 	wp_enqueue_script('jquery-ui-sortable');
 
-	wp_enqueue_style('easy-contact-forms-admin-ui-css','http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/smoothness/jquery-ui.css',false,'1.4.7',false);
+	wp_enqueue_style('easy-contact-forms-admin-ui-css','http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/smoothness/jquery-ui.css',false,'1.4.9',false);
 
 	wp_enqueue_script('jquery-ui-draggable');
 	wp_enqueue_script('jquery-ui-position');
@@ -267,7 +477,7 @@ function easycontactforms_entrypoint() {
 	wp_enqueue_script('jquery-ui-dialog');
 
 	wp_enqueue_script('json-json', plugins_url('js/json.js', __FILE__));
-	wp_enqueue_script('easy-contact-forms-html', plugins_url('easy-contact-formshtml.1.4.7.js', __FILE__));
+	wp_enqueue_script('easy-contact-forms-html', plugins_url('easy-contact-formshtml.1.4.9.js', __FILE__));
 	wp_enqueue_script('jqui-scrollto', plugins_url('js/jqui/scrollto.js', __FILE__));
 	wp_enqueue_script('js-as', plugins_url('js/as.js', __FILE__));
 
@@ -314,6 +524,9 @@ function easycontactforms_entrypoint() {
 	$js .= "config.resources['NoResults'] = " . json_encode(EasyContactFormsT::get('NoResults')) . ";";
 	$js .= "config.resources['Uploading'] = " . json_encode(EasyContactFormsT::get('Uploading')) . ";";
 	$js .= "config.resources['Upload'] = " . json_encode(EasyContactFormsT::get('Upload')) . ";";
+
+	$js .= "config.resources['ItWillReorderFieldsets'] = " . json_encode(EasyContactFormsT::get('ItWillReorderFieldsets')) . ";";
+
 	$js .= "config.resources['CF_Pin'] = " . json_encode(EasyContactFormsT::get('CF_Pin')) . ";";
 	$js .= "config.resources['CF_UnPin'] = " . json_encode(EasyContactFormsT::get('CF_UnPin')) . ";";
 	$js .= "var appManConfig = config;";

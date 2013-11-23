@@ -103,6 +103,10 @@ EasyContactFormsLayout::getFormHeader2Body();
             <input type='checkbox' id='AllowMarkupInEntries' value='<?php echo $obj->AllowMarkupInEntries;?>' <?php echo $obj->AllowMarkupInEntriesChecked;?> class='ufo-cb checkbox ufo-formvalue' style='margin-top:0;margin-bottom:0' onchange='this.value=(this.checked)?"on":"off";'/>
             <?php echo EasyContactFormsT::get('AllowMarkupInEntries');?>
           </label>
+          <label for='SkipWeeklyReport'>
+            <input type='checkbox' id='SkipWeeklyReport' value='<?php echo $obj->SkipWeeklyReport;?>' <?php echo $obj->SkipWeeklyReportChecked;?> class='ufo-cb checkbox ufo-formvalue' style='margin-top:0;margin-bottom:0' onchange='this.value=(this.checked)?"on":"off";'/>
+            <?php echo EasyContactFormsT::get('SkipWeeklyReport');?>
+          </label>
         </div>
         <div class='ufo-float-right ufo-width50'>
           <fieldset>

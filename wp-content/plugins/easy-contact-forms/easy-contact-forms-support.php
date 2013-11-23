@@ -44,9 +44,9 @@ class EasyContactFormsSupport {
 			return;
 		}
 
-		wp_enqueue_script('easy-contact-forms-html', plugins_url('easy-contact-formshtml.1.4.7.js', __FILE__), array(), false, true);
+		wp_enqueue_script('easy-contact-forms-html', plugins_url('easy-contact-formshtml.1.4.9.js', __FILE__), array(), false, true);
 
-		wp_enqueue_script('easy-contact-forms-env', plugins_url('easy-contact-forms.env.1.4.7.js', __FILE__), array(), false, true);
+		wp_enqueue_script('easy-contact-forms-env', plugins_url('easy-contact-forms.env.1.4.9.js', __FILE__), array(), false, true);
 
 		$env = (object) array();
 		$env->System = (object) array();
@@ -55,7 +55,7 @@ class EasyContactFormsSupport {
 
 		global $current_user;
 		$wp_url = rtrim(site_url(), '/');
-		$version = '1.4.7';
+		$version = '1.4.9';
 
 		$env->System->PHPVersion = phpversion();
 		$env->System->UserAgent = $_SERVER['HTTP_USER_AGENT'];
@@ -236,7 +236,7 @@ class EasyContactFormsSupport {
 
 		if (is_wp_error($response)) {
 
-			$response = new WP_Error('support_api_failed', __('An unexpected HTTP Error occurred during the Easy Contact Forms Support API request.</p> <p><a href="?" onclick="document.location.reload(); return false;">Try again</a>'), $response->get_error_message());
+			$response = new WP_Error('support_api_failed', __('An unexpected HTTP Error occurred during the Easy Contact Forms Support API request.</p> <p><a href="?" onclick="window.location.reload(); return false;">Try again</a>'), $response->get_error_message());
 
 		} else {
 			$response = $response['body'];

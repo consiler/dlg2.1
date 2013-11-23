@@ -3,8 +3,8 @@ Contributors: wppal
 Donate link: http://easy-contact-forms.com
 Tags: contact form, contact form plugin, contact forms, contact form builder, form builder, contact us, feedback form, web form, form
 Requires at least: 3.3
-Tested up to: 3.5.1
-Stable tag: 1.4.7
+Tested up to: 3.7.1
+Stable tag: 1.4.9
 
 Easy Contact Forms is a simple solution for those who need comprehensive contact forms to run business.
 
@@ -86,6 +86,7 @@ Easy Contact Forms have a lot of useful GUI features.
 7. Contact form may redirect visitors to any page.
 8. Contact form may show a custom thank you message.
 9. Any contact form may be configured to have its own style settings.
+
 
 == Installation ==
 
@@ -620,9 +621,20 @@ In order to change everything back, please uncheck the the Run in w3c compliant 
 
 == Changelog ==
 
-= Easy Contact Forms. 1.4.7 =
-* Back end support form fixes
+= Easy Contact Forms. 1.4.9 =
+* Several contact form back-endminor defets fixed.
+* Temlates are added.
+
+= Easy Contact Forms. 1.4.8 =
+* Back end apostrophe problem is fixed
+* Back end contact form field order bug fixed
+* Back end contact form performance bar diagrams are added
 * Back end sample contact form fixes
+* Front end Text paragraph contact form field is added.
+
+= Easy Contact Forms. 1.4.7 =
+* Back end sample contact form fixes
+* Back end support form fixes
 
 = Easy Contact Forms. 1.4.6 =
 * Google Map contact form field is added.

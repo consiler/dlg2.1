@@ -15,9 +15,9 @@ class MetaSlider {
     /**
      * Constructor
      */
-    public function __construct($id) {
+    public function __construct($id, $shortcode_settings) {
         $this->id = $id;
-        $this->settings = $this->get_settings();
+        $this->settings = array_merge($shortcode_settings, $this->get_settings());
         $this->identifier = 'metaslider_' . $this->id;
         $this->save();
         $this->populate_slides();
@@ -126,11 +126,14 @@ class MetaSlider {
         if (!is_admin()) {
             return;
         }
+
         // make changes to slider
         if (isset($_POST['settings'])) {
+            check_admin_referer('metaslider_save_' . $this->id);
             $this->update_settings($_POST['settings']);
         }
         if (isset($_POST['title'])) {
+            check_admin_referer('metaslider_save_' . $this->id);
             $this->update_title($_POST['title']);
         }
         if (isset($_GET['deleteSlide'])) {
@@ -139,6 +142,7 @@ class MetaSlider {
 
         // make changes to slides
         if (isset($_POST['attachment'])) {
+            check_admin_referer('metaslider_save_' . $this->id);
             $this->update_slides($_POST['attachment']);
         }
     }
@@ -225,11 +229,17 @@ class MetaSlider {
         // handle any custom classes
         $class = apply_filters('metaslider_css_classes', $class, $this->id, $this->settings);
 
+        // default
+        $style = "max-width: {$this->get_setting('width')}px;";
+
         // carousels are always 100% wide
-        if ($this->get_setting('carouselMode') != 'true') {
-            $style = "max-width: {$this->get_setting('width')}px;";
-        } else {
+        if ($this->get_setting('carouselMode') == 'true') {
             $style = "width: 100%;";
+        }
+
+        // percentWidth showcode parameter takes precedence
+        if ($this->get_setting('percentwidth') != 'false' && $this->get_setting('percentwidth') > 0) {
+            $style = "width: {$this->get_setting('percentwidth')}%;";
         }
 
         // center align the slideshow
@@ -347,7 +357,7 @@ class MetaSlider {
     }
 
     /**
-     * 
+     * Generate the @import rules for the inline style tag.
      */
     public function get_slider_css($css, $settings, $slider_id) {
         if ($slider_id != $this->id) {
@@ -364,7 +374,6 @@ class MetaSlider {
 
         return $css . $imports;
     }
-
 
     /**
      * Include slider assets, JS and CSS paths are specified by child classes.
@@ -414,7 +423,9 @@ class MetaSlider {
 
     /**
      * Delete a slide. This doesn't actually remove the slide from WordPress, simply untags
-     * it from the slide taxonomy
+     * it from the slide taxonomy.
+     *
+     * @param int $slide_id
      */
     private function delete_slide($slide_id) {
         // Get the existing terms and only keep the ones we don't want removed
@@ -433,6 +444,8 @@ class MetaSlider {
 
     /**
      * Loop over each slide and call the save action on each
+     *
+     * @param array $data - posted form data.
      */
     private function update_slides($data) {
         foreach ($data as $slide_id => $fields) {
