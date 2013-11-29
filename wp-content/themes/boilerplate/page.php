@@ -15,14 +15,14 @@
 get_header(); ?>
 <div id="internal-wrap">
   <div id="internal-header-wrap">
-    <div id="internal-header" class="centered">
+    <div id="internal-header" class="centered" style="background:url(<?php the_field('page_heading_image'); ?>); background-repeat: no-repeat; background-position:right;">
       <header id="internal-header-text">
         <h1><?php the_field('page_heading_text'); ?></h1>
         <p><?php the_field('page_subheading_text'); ?></p>
       </header>
-      <div id="internal-banner-image">
+      <!-- <div id="internal-banner-image">
         <img src="<?php the_field('page_heading_image'); ?>">
-      </div>
+      </div> -->
     </div>
   </div>
   <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
