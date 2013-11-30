@@ -1382,6 +1382,43 @@ div.timer {
 
 /* Internal Page */
 
+/* Secondary Internal Header */
+
+#secondary-internal-header-wrap {
+    height: 500px;
+    background: #045c83; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  #045c83 25%, #023b55 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(25%,#045c83), color-stop(100%,#023b55)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  #045c83 25%,#023b55 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  #045c83 25%,#023b55 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  #045c83 25%,#023b55 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  #045c83 25%,#023b55 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#045c83', endColorstr='#023b55',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+#secondary-internal-header {
+    overflow: hidden;
+    height: 100%;
+}
+#secondary-internal-header-text {
+    float: left;
+    width: 570px;
+    padding-left: 180px;
+    padding-top: 40px;
+}
+#secondary-internal-header-text > h1 {
+    font-family: hvnStd_UltLt;
+    color: #b4c1cf;
+    font-size: 36pt;
+}
+#secondary-internal-header-text > p {
+    font-family: hvnStd_Thin;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: .04em;
+}
+
+
 /* Internal Header */
 
 #internal-header-wrap {
