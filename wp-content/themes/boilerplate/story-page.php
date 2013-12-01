@@ -27,13 +27,21 @@ get_header(); ?>
 
 
 <!-- Start of blocks -->
-
+<?php
+  $bg1 = get_field('storybg_1');
+  $bg2 = get_field('storybg_2');
+  $bg3 = get_field('storybg_3');
+  ?>
 <div id="story-block" class="dg-bg bg3">
   <div class="container">
-    <div class="sectionhead">
+    <div class="sectionhead" style="background:url(<?php the_field('storybg_1'); ?>); background-repeat: no-repeat; background-position:center;">
       <header>
-      <h1>OUR VISION</h1>
-      <h2>clarity. alignment. flexibility.</h2>
+      <?php
+      $header_1 = get_field('header_1');
+      $subheader_1 = get_field('subheader_1');
+      ?>
+      <h1><?php echo $header_1 ?></h1>
+      <h2><?php echo $subheader_1 ?></h2>
     </header>
     </div>
   </div> 
@@ -47,10 +55,14 @@ get_header(); ?>
 
 <div id="story-block" class="dg-bg bg1">
   <div class="container">
-    <div class="sectionhead">
+    <div class="sectionhead" style="background:url(<?php the_field('storybg_1'); ?>);">
       <header>
-      <h1>OUR APPROACH</h1>
-      <h2>analysis. expertise. advise.</h2>
+      <?php
+      $header_2 = get_field('header_2');
+      $subheader_2 = get_field('subheader_2');
+      ?>
+      <h1><?php echo $header_2 ?></h1>
+      <h2><?php echo $subheader_2 ?></h2>
     </header>
     </div>
   </div> 
@@ -64,10 +76,14 @@ get_header(); ?>
 
 <div id="story-block" class="dg-bg bg2">
   <div class="container">
-    <div class="sectionhead">
+    <div class="sectionhead" style="background:url(<?php the_field('storybg_1'); ?>);">
       <header>
-      <h1>WHAT WE DO</h1>
-      <h2>growth acceleration.</h2>
+      <?php
+      $header_3 = get_field('header_3');
+      $subheader_3 = get_field('subheader_3');
+      ?>
+      <h1><?php echo $header_3 ?></h1>
+      <h2><?php echo $subheader_3 ?></h2>
     </header>
     </div>
   </div> 
