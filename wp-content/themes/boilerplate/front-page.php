@@ -12,12 +12,19 @@ get_header(); ?>
 <div id="fp-slideshow-wrap">
   <div id="fp-slideshow-container" class="centered">
     <script type="text/javascript">
+    var count = 1;
        $(window).load(function() {
            $('#featured').orbit({
             animation: 'fade',
-            bullets: true,
+            bullets: false,
             directionalNav: false,
-            advanceSpeed: 5000
+            advanceSpeed: 2000,
+            afterSlideChange: function(){
+              count++;
+              if(count==6){
+                this.trigger("orbit.stop");
+              }
+            }
            });
        });
     </script>
