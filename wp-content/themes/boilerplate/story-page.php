@@ -27,11 +27,7 @@ get_header(); ?>
 
 
 <!-- Start of blocks -->
-<?php
-  $bg1 = get_field('storybg_1');
-  $bg2 = get_field('storybg_2');
-  $bg3 = get_field('storybg_3');
-  ?>
+
 <div id="story-block" class="dg-bg bg3">
   <div class="container">
     <div class="sectionhead" style="background:url(<?php the_field('storybg_1'); ?>); background-repeat: no-repeat; background-position:center;">
@@ -55,7 +51,7 @@ get_header(); ?>
 
 <div id="story-block" class="dg-bg bg1">
   <div class="container">
-    <div class="sectionhead" style="background:url(<?php the_field('storybg_1'); ?>);">
+    <div class="sectionhead" style="background:url(<?php the_field('storybg_2'); ?>); background-repeat: no-repeat; background-position:center;">
       <header>
       <?php
       $header_2 = get_field('header_2');
@@ -76,7 +72,7 @@ get_header(); ?>
 
 <div id="story-block" class="dg-bg bg2">
   <div class="container">
-    <div class="sectionhead" style="background:url(<?php the_field('storybg_1'); ?>);">
+    <div class="sectionhead" style="background:url(<?php the_field('storybg_3'); ?>); background-repeat: no-repeat; background-position:center;">
       <header>
       <?php
       $header_3 = get_field('header_3');
