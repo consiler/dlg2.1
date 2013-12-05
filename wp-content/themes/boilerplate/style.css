@@ -1525,6 +1525,10 @@ div.timer {
 #internal-main-nav > ul > li {
     padding-bottom: 15px;
 }
+#internal-main-nav > ul > li > a.current-page {
+    color: #156dc3;
+    cursor: default;
+}
 
 /* Used on pages with no sidebar */
 .internal-main-content-fullwidth {
