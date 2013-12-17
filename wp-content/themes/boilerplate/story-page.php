@@ -14,9 +14,9 @@
 
 get_header(); ?>
 <div id="internal-wrap">
-  <div id="internal-header-wrap">
-    <div id="internal-header" class="centered" style="background:url(<?php the_field('page_heading_image'); ?>); background-repeat: no-repeat; background-position:right;">
-      <header id="internal-header-text">
+  <div id="large-internal-header-wrap">
+    <div id="large-internal-header" class="centered" style="background:url(<?php the_field('page_heading_image'); ?>); background-repeat: no-repeat; background-position:right;">
+      <header id="large-internal-header-text">
         <h1><?php the_field('page_heading_text'); ?></h1>
         <p><?php the_field('page_subheading_text'); ?></p>
       </header>
@@ -27,6 +27,12 @@ get_header(); ?>
 
 
 <!-- Start of blocks -->
+
+<div id="story-block" class="dg-even">
+  <div class="container" style="height:200px">
+  </div> 
+</div>
+
 
 <div id="story-block" class="dg-bg bg3">
   <div class="container">
@@ -45,7 +51,7 @@ get_header(); ?>
 
 <div id="story-block" class="dg-odd">
   <div class="container">
-    <img id="vision">
+    <div id="vision" style="background:url(<?php the_field('vision'); ?>); background-repeat: no-repeat; background-position: center;">
   </div> 
 </div>
 
@@ -66,7 +72,7 @@ get_header(); ?>
 
 <div id="story-block" class="dg-odd">
   <div class="container">
-    <img id="approach">
+    <div id="approach"style="background:url(<?php the_field('approach'); ?>); background-repeat: no-repeat; background-position: center;">
   </div> 
 </div>
 
@@ -87,7 +93,7 @@ get_header(); ?>
 
 <div id="story-block" class="dg-odd">
   <div class="container">
-    <img id="do">
+    <div id="do" style="background:url(<?php the_field('whatwedo'); ?>); background-repeat: no-repeat; background-position: center;">
   </div> 
 </div>
 

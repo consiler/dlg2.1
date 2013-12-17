@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Secondary Page
+ * Template Name: Secondary Page Columns
  *
  * A custom page template with an optional sidebar.
  *
@@ -26,17 +26,9 @@ get_header(); ?>
     </div>
   </div>
   
-  <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
   <div id="internal-lower-wrap">
-    <div id="internal-lower" class="centered">
-      <div id="internal-main">
-        <article id="internal-main-content" class="secondary">
-          <?php the_content(get_the_ID()); ?>
-        </article>
-      </div>
-      <?php if(get_field('has_sidebar')){ ?>
-      <aside id="internal-sidebar">
-        <div id="fp-testimonials-seemore">
+    <div id="fp-testimonials" class="centered">
+    <div id="fp-testimonials-seemore">
       <?php
       $header = get_field('header_1');
       $copy = get_field('copy_1');
@@ -44,11 +36,32 @@ get_header(); ?>
       <h4><?php echo $header ?></h4>
       <p><?php echo $copy ?></p>
     </div>
-      </aside>
-      <?php } ?>
+    <div id="fp-testimonials-seemore">
+      <?php
+      $header = get_field('header_2');
+      $copy = get_field('copy_2');
+      $cta = get_field('cta_2');
+      $cta_link = get_field('cta_link_2');
+      ?>
+      <h4><?php echo $header ?></h4>
+      <p><?php echo $copy ?></p>
+      <a href="<?php echo $cta_link ?>"><span class="light-grey-button"><?php echo $cta ?></span></a>
     </div>
+    <div id="fp-testimonials-seemore">
+      <?php
+      $header = get_field('header_3');
+      $copy = get_field('copy_3');
+      $cta = get_field('cta_3');
+      $cta_link = get_field('cta_link_3');
+      ?>
+      <h4><?php echo $header ?></h4>
+      <p><?php echo $copy ?></p>
+      <a href="<?php echo $cta_link ?>"><span class="light-grey-button"><?php echo $cta ?></span></a>
+    </div>
+    <!-- <div id="fp-testimonials-logos">
+      <img src="<?php bloginfo('template_url'); ?>/images/testimonials-client-logos.jpg">
+      <button><?php //arrow button, may indicate that this is a slideshow of images with logos ?></button>
+    </div> -->
   </div>
-  <?php endwhile; ?>
-
 </div>
 <?php get_footer(); ?>

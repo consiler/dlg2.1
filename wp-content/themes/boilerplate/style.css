@@ -14,6 +14,10 @@
 	Comment blocks indicate where each begins and ends, like this, for example...
 */
 
+/****************************************************************************
+*                           This is the DEV style.css                       *
+****************************************************************************/
+
 /** START HTML5 Boilerplate CSS **/
 
 /*! normalize.css v1.1.2 | MIT License | git.io/normalize */
@@ -1036,23 +1040,78 @@ button {
 /* Start Dialog CSS */
 
 /* Importing Fonts */
-@font-face {
+/*@font-face {
   font-family: hvnStd_UltLt;
-  src: url('fonts/HelveticaNeueLTStd-UltLt.otf');
+  src: url('fonts/HelveticaNeueLTStd-UltLt.otf') format('opentype');
 }
 @font-face {
   font-family: hvnStd_Thin;
-  src: url('fonts/HelveticaNeueLTStd-ThCn.otf');
+  src: url('fonts/HelveticaNeueLTStd-ThCn.otf') format('opentype');
 }
 @font-face {
   font-family: hvnStd_LiteCn;
-  src: url('fonts/HelveticaNeueLTStd-LtCn.otf');
+  src: url('fonts/HelveticaNeueLTStd-LtCn.otf') format('opentype');
 }
 @font-face {
   font-family: hvnStd_Lite;
-  src: url('fonts/HelveticaNeueLTCom-Lt.otf');
+  src: url('fonts/HelveticaNeueLTCom-Lt.otf') format('opentype');
+}*/
+@font-face {
+    font-family: 'hvnStd_UltLt';
+    src: url('fonts/helveticaneueltstd-ultlt-webfont.eot');
+    src: url('fonts/helveticaneueltstd-ultlt-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/helveticaneueltstd-ultlt-webfont.woff') format('woff'),
+         url('fonts/helveticaneueltstd-ultlt-webfont.ttf') format('truetype'),
+         url('fonts/helveticaneueltstd-ultlt-webfont.svg#helvetica_neue_lt_st25ultraLt') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }
 
+
+
+
+@font-face {
+    font-family: 'hvnStd_Thin';
+    src: url('fonts/helveticaneueltstd-thcn-webfont.eot');
+    src: url('fonts/helveticaneueltstd-thcn-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/helveticaneueltstd-thcn-webfont.woff') format('woff'),
+         url('fonts/helveticaneueltstd-thcn-webfont.ttf') format('truetype'),
+         url('fonts/helveticaneueltstd-thcn-webfont.svg#helvetica_neue_lt_std37ThCn') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'hvnStd_LiteCn';
+    src: url('fonts/helveticaneueltstd-ltcn-webfont.eot');
+    src: url('fonts/helveticaneueltstd-ltcn-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/helveticaneueltstd-ltcn-webfont.woff') format('woff'),
+         url('fonts/helveticaneueltstd-ltcn-webfont.ttf') format('truetype'),
+         url('fonts/helveticaneueltstd-ltcn-webfont.svg#helvetica_neue_lt_std47LtCn') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'hvnStd_Lite';
+    src: url('fonts/helveticaneueltcom-lt-webfont.eot');
+    src: url('fonts/helveticaneueltcom-lt-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/helveticaneueltcom-lt-webfont.woff') format('woff'),
+         url('fonts/helveticaneueltcom-lt-webfont.ttf') format('truetype'),
+         url('fonts/helveticaneueltcom-lt-webfont.svg#helvetica_neue_lt_com45_light') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 
 html, body {
    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
@@ -1382,10 +1441,10 @@ div.timer {
 
 /* Internal Page */
 
-/* Secondary Internal Header */
+/* Large Internal Header */
 
-#secondary-internal-header-wrap {
-    height: 500px;
+#large-internal-header-wrap {
+    height: 455px;
     background: #045c83; /* Old browsers */
     background: -moz-radial-gradient(center, ellipse cover,  #045c83 25%, #023b55 100%); /* FF3.6+ */
     background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(25%,#045c83), color-stop(100%,#023b55)); /* Chrome,Safari4+ */
@@ -1396,28 +1455,33 @@ div.timer {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#045c83', endColorstr='#023b55',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
 }
-#secondary-internal-header {
+#large-internal-header {
     overflow: hidden;
     height: 100%;
 }
-#secondary-internal-header-text {
+#large-internal-header-text {
     float: left;
+    margin-top: 65px;
     width: 570px;
-    padding-left: 180px;
+    padding-left: 130px;
     padding-top: 40px;
 }
-#secondary-internal-header-text > h1 {
+#large-internal-header-text > h1 {
     font-family: hvnStd_UltLt;
-    color: #b4c1cf;
+    /*color: #3d3d3d;*/
     font-size: 36pt;
+    width: 400px;
 }
-#secondary-internal-header-text > p {
+#large-internal-header-text > p {
     font-family: hvnStd_Thin;
     font-size: 16px;
-    color: #fff;
+    /*color: #464e52;*/
     letter-spacing: .04em;
+    width: 250px;
 }
-
+#large-internal-header-text span {
+    margin-top: 20px;
+}
 
 /* Internal Header */
 
@@ -1467,6 +1531,17 @@ div.timer {
 #internal-lower {
     overflow: hidden;
     padding-bottom: 60px;
+}
+
+
+/* Secondary Page Internal Main Content Area */
+
+#internal-main-content.secondary {
+    float: left;
+    width: 632px;
+    padding-top: 30px;
+    padding-right: 20px;
+    margin-left: 130px;
 }
 
 /* Internal Main Content Area */
@@ -1711,6 +1786,6 @@ blockquote {
 #story-block.bg2 {background-image: url(/wp-content/themes/boilerplate/images/story/bg2.jpg);}
 #story-block.bg3 {background-image: url(/wp-content/themes/boilerplate/images/story/bg3.jpg);}
 
-#story-block #vision {content: url(/wp-content/themes/boilerplate/images/story/slide1.jpg);}
-#story-block #approach {content: url(/wp-content/themes/boilerplate/images/story/slide2.jpg);}
-#story-block #do {content: url(/wp-content/themes/boilerplate/images/story/slide3.jpg);}
+#story-block #vision:after {content: url(/wp-content/themes/boilerplate/images/story/slide1.jpg);}
+#story-block #approach:after {content: url(/wp-content/themes/boilerplate/images/story/slide2.jpg);}
+#story-block #do:after {content: url(/wp-content/themes/boilerplate/images/story/slide3.jpg);}
